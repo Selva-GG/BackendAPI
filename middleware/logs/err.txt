@@ -1,77 +1,135 @@
-11/13/2024, 5:31:27 PM User Already Exists
-11/13/2024, 5:31:28 PM User Already Exists
-11/13/2024, 5:31:28 PM User Already Exists
-11/13/2024, 5:31:28 PM User Already Exists
-11/13/2024, 5:31:34 PM password must be at least 8 characters long.
-11/13/2024, 5:31:40 PM User Already Exists
-11/13/2024, 5:33:13 PM userAuth is not defined
-11/13/2024, 5:33:22 PM userAuth is not defined
-11/13/2024, 5:33:58 PM userAuth is not defined
-11/13/2024, 5:34:10 PM userAuth is not defined
-11/13/2024, 5:34:13 PM userAuth is not defined
-11/13/2024, 5:34:14 PM userAuth is not defined
-11/13/2024, 5:34:14 PM userAuth is not defined
-11/13/2024, 5:34:30 PM Check your password
-11/13/2024, 5:35:05 PM No user exists! Check username and try again
-11/13/2024, 5:35:25 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
-11/13/2024, 5:35:44 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
-11/13/2024, 5:36:14 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
-11/13/2024, 5:36:44 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
-11/13/2024, 5:41:40 PM No user exists! Check username and try again
-11/13/2024, 5:41:46 PM Database insertion failed: INSERT has more expressions than target columns
-11/13/2024, 5:41:53 PM Database insertion failed: INSERT has more target columns than expressions
-11/13/2024, 5:44:04 PM User Already Exists
-11/13/2024, 5:44:10 PM jsonData is not defined
-11/13/2024, 5:46:36 PM jsonData is not defined
-11/13/2024, 5:48:29 PM Database insertion failed: INSERT has more expressions than target columns
-11/13/2024, 5:49:50 PM User Already Exists
-11/13/2024, 5:50:18 PM User Already Exists
-11/13/2024, 5:51:25 PM User Already Exists
-11/13/2024, 5:54:08 PM User Already Exists
-11/13/2024, 5:54:17 PM User Already Exists
-11/13/2024, 6:10:56 PM User Already Exists
-11/13/2024, 6:11:09 PM Database insertion failed: syntax error at or near "["
-11/13/2024, 6:12:29 PM Database insertion failed: syntax error at or near "["
-11/13/2024, 6:13:43 PM Database insertion failed: syntax error at or near "$1"
-11/13/2024, 6:14:04 PM Database insertion failed: syntax error at or near "["
-11/13/2024, 6:14:18 PM Database insertion failed: syntax error at or near "["
-11/13/2024, 6:14:19 PM Database insertion failed: syntax error at or near "["
-11/13/2024, 6:14:31 PM Database insertion failed inseer: syntax error at or near "["
-11/13/2024, 6:14:44 PM Database insertion failed : undefined
-11/13/2024, 6:14:49 PM Database insertion failed : error: syntax error at or near "["
-11/13/2024, 6:15:03 PM Database insertion failed : undefined
-11/13/2024, 6:15:08 PM Database insertion failed : syntax error at or near "["
-11/13/2024, 6:15:30 PM Database insertion failed : syntax error at or near "["
-11/13/2024, 6:16:01 PM Database insertion failed : syntax error at or near "["
-11/13/2024, 6:16:18 PM Database insertion failed : syntax error at or near "$1"
-11/13/2024, 6:16:21 PM Database insertion failed : syntax error at or near "$1"
-11/13/2024, 6:17:08 PM Database insertion failed: column "firstname" of relation "users" does not exist
-11/13/2024, 6:18:22 PM User Already Exists
-11/13/2024, 6:18:24 PM User Already Exists
-11/13/2024, 6:19:28 PM Database insertion failed: syntax error at or near "user"
-11/13/2024, 6:19:38 PM Database insertion failed: syntax error at or near "user"
-11/13/2024, 6:21:02 PM Database insertion failed: syntax error at or near "$1"
-11/13/2024, 6:26:49 PM DBController.insert is not a function
-11/13/2024, 6:27:17 PM Database insertion failed: could not determine data type of parameter $1
-11/13/2024, 6:27:36 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
-11/13/2024, 6:27:58 PM Expected property name or '}' in JSON at position 4
-11/13/2024, 6:28:08 PM Expected ':' after property name in JSON at position 14
-11/13/2024, 6:28:14 PM User Already Exists
-11/13/2024, 6:29:33 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
-11/13/2024, 6:29:51 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
-11/13/2024, 6:32:57 PM User Already Exists
-11/13/2024, 6:33:16 PM Database insertion failed: invalid input syntax for type integer: "{"user_id": 186}"
-11/13/2024, 6:33:16 PM User Already Exists
-11/13/2024, 6:33:21 PM Database insertion failed: invalid input syntax for type integer: "{"user_id": 187}"
-11/13/2024, 6:34:16 PM User Already Exists
-11/13/2024, 6:35:04 PM User Already Exists
-11/13/2024, 6:35:18 PM User Already Exists
-11/13/2024, 6:53:36 PM User Already Exists
-11/13/2024, 6:53:37 PM User Already Exists
-11/13/2024, 6:53:42 PM DBController.insertUser is not a function
-11/13/2024, 6:55:07 PM Database insertion failed: column "userid" of relation "user_details" does not exist
-11/13/2024, 6:55:23 PM Database insertion failed: relation "inserted_user" does not exist
-11/13/2024, 6:55:43 PM Database insertion failed: WITH query "user_cred_insert" does not have a RETURNING clause
-11/13/2024, 6:56:09 PM Database insertion failed: column reference "user_id" is ambiguous
-11/13/2024, 6:56:28 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
-11/13/2024, 6:56:47 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
+11/14/2024, 3:33:57 PM User Already Exists
+11/14/2024, 3:33:58 PM User Already Exists
+11/14/2024, 3:38:55 PM User Already Exists
+11/14/2024, 3:44:25 PM Expected double-quoted property name in JSON at position 65
+11/14/2024, 4:01:24 PM Invalid Token
+11/14/2024, 4:01:26 PM Invalid Token
+11/14/2024, 4:01:26 PM Invalid Token
+11/14/2024, 4:01:27 PM Invalid Token
+11/14/2024, 4:01:27 PM Invalid Token
+11/14/2024, 4:01:27 PM Invalid Token
+11/14/2024, 4:01:27 PM Invalid Token
+11/14/2024, 4:01:28 PM Invalid Token
+11/14/2024, 4:01:28 PM Invalid Token
+11/14/2024, 4:01:28 PM Invalid Token
+11/14/2024, 4:01:28 PM Invalid Token
+11/14/2024, 4:01:28 PM Invalid Token
+11/14/2024, 4:01:28 PM Invalid Token
+11/14/2024, 4:01:29 PM Invalid Token
+11/14/2024, 4:01:29 PM Invalid Token
+11/14/2024, 4:01:29 PM Invalid Token
+11/14/2024, 4:01:29 PM Invalid Token
+11/14/2024, 4:01:29 PM Invalid Token
+11/14/2024, 4:01:29 PM Invalid Token
+11/14/2024, 4:01:30 PM Invalid Token
+11/14/2024, 4:01:30 PM Invalid Token
+11/14/2024, 4:01:30 PM Invalid Token
+11/14/2024, 4:03:17 PM User Already Exists
+11/14/2024, 4:06:30 PM Cannot read properties of undefined (reading 'expiring_at')
+11/14/2024, 4:06:34 PM Cannot read properties of undefined (reading 'expiring_at')
+11/14/2024, 4:07:56 PM Cannot read properties of undefined (reading 'expiring_at')
+11/14/2024, 4:07:57 PM Cannot read properties of undefined (reading 'expiring_at')
+11/14/2024, 4:08:25 PM Cannot read properties of undefined (reading 'expiring_at')
+11/14/2024, 4:10:37 PM Cannot read properties of undefined (reading '0')
+11/14/2024, 4:11:03 PM Cannot read properties of undefined (reading '0')
+11/14/2024, 4:11:09 PM Cannot read properties of undefined (reading '0')
+11/14/2024, 4:11:21 PM Cannot read properties of undefined (reading 'expiring_at')
+11/14/2024, 4:11:52 PM Invalid Token
+11/14/2024, 4:11:53 PM Invalid Token
+11/14/2024, 4:11:53 PM Invalid Token
+11/14/2024, 4:11:53 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:54 PM Invalid Token
+11/14/2024, 4:11:55 PM Invalid Token
+11/14/2024, 4:11:55 PM Invalid Token
+11/14/2024, 4:11:55 PM Invalid Token
+11/14/2024, 4:11:55 PM Invalid Token
+11/14/2024, 4:12:13 PM Token Expired
+11/14/2024, 4:12:14 PM Token Expired
+11/14/2024, 4:16:31 PM Token Expired
+11/14/2024, 4:16:32 PM Token Expired
+11/14/2024, 4:16:32 PM Token Expired
+11/14/2024, 4:16:32 PM Token Expired
+11/14/2024, 4:16:33 PM Token Expired
+11/14/2024, 4:16:33 PM Token Expired
+11/14/2024, 4:16:33 PM Token Expired
+11/14/2024, 4:16:33 PM Token Expired
+11/14/2024, 4:53:59 PM User Already Exists
+11/14/2024, 4:54:00 PM User Already Exists
+11/14/2024, 4:57:28 PM User Already Exists
+11/14/2024, 4:57:28 PM User Already Exists
+11/14/2024, 4:59:44 PM User Already Exists
+11/14/2024, 5:00:55 PM this.addUserToDB is not a function
+11/14/2024, 5:02:45 PM addUserToDB is not defined
+11/14/2024, 5:06:50 PM this.addUserToDB is not a function
+11/14/2024, 5:08:00 PM addUserToDB is not defined
+11/14/2024, 5:08:33 PM addUserToDB is not defined
+11/14/2024, 5:08:40 PM addUserToDB is not defined
+11/14/2024, 5:08:41 PM addUserToDB is not defined
+11/14/2024, 5:09:09 PM req_body is not defined
+11/14/2024, 5:14:06 PM User Already Exists
+11/14/2024, 5:14:07 PM User Already Exists
+11/14/2024, 5:14:08 PM User Already Exists
+11/14/2024, 5:14:09 PM User Already Exists
+11/14/2024, 5:14:09 PM User Already Exists
+11/14/2024, 5:14:52 PM User Already Exists
+11/14/2024, 5:16:12 PM User Already Exists
+11/14/2024, 5:18:03 PM User Already Exists
+11/14/2024, 5:18:06 PM userRes is not defined
+11/14/2024, 5:19:50 PM User Already Exists
+11/14/2024, 5:19:52 PM User Already Exists
+11/14/2024, 5:19:54 PM userRes is not defined
+11/14/2024, 5:21:40 PM User Already Exists
+11/14/2024, 5:22:04 PM User Already Exists
+11/14/2024, 5:24:26 PM Invalid token
+11/14/2024, 5:24:27 PM Invalid token
+11/14/2024, 5:24:28 PM Invalid token
+11/14/2024, 5:31:52 PM Token Expired
+11/14/2024, 5:31:57 PM Token Expired
+11/14/2024, 5:31:58 PM Token Expired
+11/14/2024, 5:39:13 PM Token Expired
+11/14/2024, 5:39:50 PM Token Expired
+11/14/2024, 5:40:18 PM Token Expired
+11/14/2024, 5:41:16 PM Token Expired
+11/14/2024, 5:42:12 PM Token Expired
+11/14/2024, 5:42:30 PM Token Expired
+11/14/2024, 5:42:54 PM Invalid Token
+11/14/2024, 5:43:11 PM Invalid Token
+11/14/2024, 5:43:30 PM Invalid Token
+11/14/2024, 5:43:32 PM Invalid Token
+11/14/2024, 5:43:42 PM Invalid Token
+11/14/2024, 5:43:56 PM Invalid Token
+11/14/2024, 5:48:00 PM Invalid Token
+11/14/2024, 5:48:02 PM Invalid Token
+11/14/2024, 5:48:02 PM Invalid Token
+11/14/2024, 5:48:04 PM Invalid Token
+11/14/2024, 5:52:34 PM Invalid Token
+11/14/2024, 5:52:35 PM Invalid Token
+11/14/2024, 5:52:36 PM Invalid Token
+11/14/2024, 5:52:36 PM Invalid Token
+11/14/2024, 5:52:37 PM Invalid Token
+11/14/2024, 5:52:38 PM Invalid Token
+11/14/2024, 5:52:39 PM Invalid Token
+11/14/2024, 5:52:40 PM Invalid Token
+11/14/2024, 5:53:32 PM Invalid Token
+11/14/2024, 5:53:32 PM Invalid Token
+11/14/2024, 5:53:33 PM Invalid Token
+11/14/2024, 5:53:33 PM Invalid Token
+11/14/2024, 5:53:34 PM Invalid Token
+11/14/2024, 5:53:34 PM Invalid Token
+11/14/2024, 5:53:36 PM Invalid Token
+11/14/2024, 5:53:36 PM Invalid Token
+11/14/2024, 5:53:43 PM Invalid Token
+11/14/2024, 5:53:55 PM Invalid Token
+11/14/2024, 5:54:53 PM Invalid Token
+11/14/2024, 5:54:55 PM Invalid Token
+11/14/2024, 6:00:39 PM Invalid Token
+11/14/2024, 6:01:24 PM Invalid Token
+11/14/2024, 6:03:37 PM Invalid Token
+11/14/2024, 6:03:38 PM Invalid Token
+11/14/2024, 6:03:38 PM Invalid Token

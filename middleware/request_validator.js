@@ -11,12 +11,13 @@ export const registerConstraints = {
   password: ["required", "minLength:8"],
   age: ["required", "minValue:18"],
 };
- 
-export function authValidator (authConstraints)  { return (req, res, next) => {
-  let error = Validator.validate(loginConstraints, req.body);
-  if (error) {
-    return next(new ErrorResponse(error, 401));
-  }
-  next();
-}}
 
+export function request_validator(authConstraints) {
+  return (req, res, next) => {
+    let error = Validator.validate(loginConstraints, req.body);
+    if (error) {
+      return next(new ErrorResponse(error, 401));
+    }
+    next();
+  };
+}
