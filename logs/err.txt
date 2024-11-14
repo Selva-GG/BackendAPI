@@ -1,0 +1,461 @@
+11/6/2024, 2:40:25 PM  Password must be of 8 characters
+11/6/2024, 2:41:06 PM  Password must be of 8 characters
+11/6/2024, 2:41:24 PM  Password must be of 8 characters
+11/6/2024, 2:42:35 PM Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+11/6/2024, 2:42:59 PM  Password must be of 8 characters
+11/6/2024, 2:43:30 PM  Password must be of 8 characters
+11/6/2024, 2:43:35 PM  Password must be of 8 characters
+11/6/2024, 2:47:14 PM  Password must be of 8 characters
+11/6/2024, 2:47:22 PM  Password must be of 8 characters
+11/6/2024, 2:47:35 PM  Password must be of 8 characters
+11/6/2024, 2:47:58 PM  Password must be of 8 characters
+11/6/2024, 2:47:59 PM  Password must be of 8 characters
+11/6/2024, 2:48:30 PM  Password must be of 8 characters
+11/6/2024, 3:17:07 PM 401
+11/6/2024, 3:17:48 PM User already exist
+11/6/2024, 3:18:32 PM User already exist
+11/6/2024, 3:28:05 PM User already exist
+11/6/2024, 3:28:09 PM User already exist
+11/6/2024, 3:34:12 PM User already exist
+11/6/2024, 3:35:01 PM User already exist
+11/6/2024, 3:35:14 PM User already exist
+11/6/2024, 3:35:31 PM User already exist
+11/6/2024, 3:35:38 PM User already exist
+11/6/2024, 3:37:29 PM User already exist
+11/6/2024, 3:45:15 PM User already exist
+11/6/2024, 3:45:17 PM User already exist
+11/6/2024, 3:45:19 PM User already exist
+11/6/2024, 3:45:21 PM User already exist
+11/6/2024, 4:08:27 PM User already exist
+11/6/2024, 4:08:36 PM User already exist
+11/6/2024, 4:08:37 PM User already exist
+11/6/2024, 4:13:51 PM User already exist
+11/6/2024, 4:13:54 PM User already exist
+11/6/2024, 4:13:55 PM User already exist
+11/6/2024, 4:13:55 PM User already exist
+11/6/2024, 4:15:59 PM User already exist
+11/6/2024, 4:16:00 PM User already exist
+11/6/2024, 4:21:16 PM New User ! Register
+11/6/2024, 4:22:08 PM New User ! Register
+11/6/2024, 4:22:57 PM New User ! Register
+11/6/2024, 4:24:11 PM New User ! Register
+11/6/2024, 4:25:26 PM New User ! Register
+11/6/2024, 4:25:48 PM New User ! Register
+11/6/2024, 4:25:56 PM New User ! Register
+11/6/2024, 4:26:33 PM New User ! Register
+11/6/2024, 4:26:49 PM New User ! Register
+11/6/2024, 4:27:13 PM New User ! Register
+11/6/2024, 4:59:12 PM New User ! Register
+11/6/2024, 5:01:08 PM New User ! Register
+11/6/2024, 5:01:09 PM New User ! Register
+11/6/2024, 5:01:10 PM New User ! Register
+11/6/2024, 5:01:37 PM New User ! Register
+11/6/2024, 5:01:45 PM User already exist
+11/6/2024, 5:02:42 PM User already exist
+11/6/2024, 5:02:47 PM User already exist
+11/6/2024, 5:03:32 PM User already exist
+11/6/2024, 5:03:34 PM User already exist
+11/6/2024, 5:11:14 PM User already exist
+11/6/2024, 5:11:18 PM User already exist
+11/6/2024, 5:11:26 PM User already exist
+11/6/2024, 5:11:28 PM User already exist
+11/6/2024, 5:11:28 PM User already exist
+11/6/2024, 5:11:28 PM User already exist
+11/6/2024, 5:11:32 PM User already exist
+11/6/2024, 5:11:32 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:33 PM User already exist
+11/6/2024, 5:11:34 PM User already exist
+11/6/2024, 5:11:34 PM User already exist
+11/6/2024, 5:11:34 PM User already exist
+11/6/2024, 5:11:34 PM User already exist
+11/6/2024, 5:14:04 PM User already exist
+11/6/2024, 5:14:41 PM User already exist
+11/6/2024, 5:14:55 PM New User ! Register
+11/6/2024, 5:32:03 PM User already exist
+11/6/2024, 5:33:04 PM Invalid email format
+11/6/2024, 5:33:40 PM  Password must be of 8 characters
+11/6/2024, 5:33:55 PM User already exist
+11/6/2024, 5:34:15 PM New User ! Register
+11/6/2024, 6:54:26 PM 401
+11/7/2024, 12:26:49 PM 401
+11/7/2024, 12:28:04 PM 400
+11/7/2024, 12:28:57 PM 400
+11/7/2024, 12:28:59 PM 400
+11/7/2024, 12:28:59 PM 400
+11/7/2024, 12:29:05 PM 400
+11/7/2024, 12:29:21 PM 400
+11/7/2024, 12:29:52 PM 400
+11/7/2024, 12:30:34 PM Unexpected token ''', ..." "user" : 'Selva',
+ "... is not valid JSON
+11/7/2024, 12:30:53 PM Invalid email format
+11/7/2024, 12:30:57 PM 400
+11/7/2024, 12:31:14 PM Both username and password field are required
+11/7/2024, 12:31:19 PM Both username and password field are required
+11/7/2024, 1:04:15 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:04:17 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:05:15 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:44:26 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:45:04 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:46:25 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:57:12 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 1:57:27 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:06:02 PM undefined
+11/7/2024, 2:06:18 PM undefined
+11/7/2024, 2:07:13 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:07:22 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:08:08 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:10:19 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:10:32 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:14:03 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:14:04 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:14:21 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:14:38 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:15:34 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:15:40 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:16:52 PM duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 2:28:20 PM Query values must be an array
+11/7/2024, 2:29:26 PM User Already Exists
+11/7/2024, 2:29:28 PM User Already Exists
+11/7/2024, 2:29:45 PM User Already Exists
+11/7/2024, 2:32:05 PM User Already Exists
+11/7/2024, 2:32:06 PM User Already Exists
+11/7/2024, 2:44:41 PM User Already Exists
+11/7/2024, 2:44:43 PM User Already Exists
+11/7/2024, 2:44:44 PM User Already Exists
+11/7/2024, 2:45:02 PM Check your password
+11/7/2024, 2:45:05 PM No user exists ! Check username and try again
+11/7/2024, 2:47:33 PM No user exists ! Check username and try again
+11/7/2024, 2:48:03 PM User Already Exists
+11/7/2024, 2:48:07 PM User Already Exists
+11/7/2024, 2:48:11 PM User Already Exists
+11/7/2024, 2:48:21 PM Both username and password field are required
+11/7/2024, 2:48:29 PM Check your password
+11/7/2024, 2:48:34 PM No user exists ! Check username and try again
+11/7/2024, 2:48:43 PM Check your password
+11/7/2024, 2:50:29 PM User Already Exists
+11/7/2024, 2:50:40 PM User Already Exists
+11/7/2024, 2:51:03 PM User Already Exists
+11/7/2024, 2:52:22 PM User Already Exists
+11/7/2024, 3:09:29 PM Cannot read properties of undefined (reading '0')
+11/7/2024, 3:12:50 PM Cannot read properties of undefined (reading '0')
+11/7/2024, 3:12:57 PM Cannot read properties of undefined (reading '0')
+11/7/2024, 3:13:00 PM Cannot read properties of undefined (reading '0')
+11/7/2024, 3:13:55 PM error is not defined
+11/7/2024, 3:14:52 PM No user exists! Check username and try again
+11/7/2024, 3:14:58 PM No user exists! Check username and try again
+11/7/2024, 3:14:59 PM No user exists! Check username and try again
+11/7/2024, 3:14:59 PM No user exists! Check username and try again
+11/7/2024, 3:15:07 PM No user exists! Check username and try again
+11/7/2024, 3:15:12 PM Check your password
+11/7/2024, 3:15:30 PM User Already Exists
+11/7/2024, 3:15:47 PM User Already Exists
+11/7/2024, 3:16:39 PM User Already Exists
+11/7/2024, 3:16:53 PM User Already Exists
+11/7/2024, 3:17:37 PM User Already Exists
+11/7/2024, 3:17:37 PM User Already Exists
+11/7/2024, 3:17:38 PM User Already Exists
+11/7/2024, 3:17:38 PM User Already Exists
+11/7/2024, 3:17:38 PM User Already Exists
+11/7/2024, 3:17:39 PM User Already Exists
+11/7/2024, 3:18:05 PM No user exists! Check username and try again
+11/7/2024, 3:18:10 PM Check your password
+11/7/2024, 3:19:32 PM No user exists! Check username and try again
+11/7/2024, 3:19:42 PM User Already Exists
+11/7/2024, 3:19:45 PM User Already Exists
+11/7/2024, 3:20:10 PM Database insertion failed: duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 3:20:13 PM Database insertion failed: duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 3:21:07 PM User Already Exists
+11/7/2024, 3:21:09 PM User Already Exists
+11/7/2024, 3:21:15 PM Database insertion failed: duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 3:21:24 PM Database insertion failed: duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 3:21:37 PM Database insertion failed: duplicate key value violates unique constraint "users_username_key"
+11/7/2024, 3:21:53 PM User Already Exists
+11/7/2024, 3:38:04 PM Check your password
+11/7/2024, 3:40:57 PM Invalid email format
+11/7/2024, 3:41:32 PM Check your password
+11/7/2024, 3:41:42 PM Check your password
+11/7/2024, 3:41:54 PM Bad control character in string literal in JSON at position 30
+11/7/2024, 3:42:22 PM No user exists! Check username and try again
+11/7/2024, 3:42:28 PM Check your password
+11/7/2024, 3:42:41 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 3:43:19 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 3:43:45 PM Bad control character in string literal in JSON at position 30
+11/7/2024, 3:45:27 PM User Already Exists
+11/7/2024, 3:45:33 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 3:46:52 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 3:59:51 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 3:59:57 PM User Already Exists
+11/7/2024, 4:00:04 PM User Already Exists
+11/7/2024, 4:00:23 PM User Already Exists
+11/7/2024, 4:00:24 PM User Already Exists
+11/7/2024, 4:00:24 PM User Already Exists
+11/7/2024, 4:00:24 PM User Already Exists
+11/7/2024, 4:00:25 PM User Already Exists
+11/7/2024, 4:00:25 PM User Already Exists
+11/7/2024, 4:00:25 PM User Already Exists
+11/7/2024, 4:00:25 PM User Already Exists
+11/7/2024, 4:00:25 PM User Already Exists
+11/7/2024, 4:00:25 PM User Already Exists
+11/7/2024, 4:01:18 PM User Already Exists
+11/7/2024, 4:01:20 PM User Already Exists
+11/7/2024, 4:01:21 PM User Already Exists
+11/7/2024, 4:44:36 PM User Already Exists
+11/7/2024, 4:45:14 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 4:45:21 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 4:45:33 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 4:45:39 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 4:45:44 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 4:45:55 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 4:45:57 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:08:13 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:08:17 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:08:25 PM Check your password
+11/7/2024, 5:08:30 PM Check your password
+11/7/2024, 5:08:43 PM Check your password
+11/7/2024, 5:09:15 PM Check your password
+11/7/2024, 5:09:19 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:10:45 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:12:25 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:13:07 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:13:25 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:13:45 PM Bad control character in string literal in JSON at position 29
+11/7/2024, 5:14:17 PM Check your password
+11/7/2024, 5:14:28 PM Check your password
+11/8/2024, 9:50:10 AM Both username and password field are required
+11/8/2024, 9:55:41 AM Check your password
+11/12/2024, 9:14:40 AM No user exists! Check username and try again
+11/12/2024, 1:46:56 PM User Already Exists
+11/12/2024, 1:46:57 PM User Already Exists
+11/12/2024, 1:46:57 PM User Already Exists
+11/12/2024, 1:46:58 PM User Already Exists
+11/12/2024, 1:46:58 PM User Already Exists
+11/12/2024, 1:46:59 PM User Already Exists
+11/12/2024, 1:46:59 PM User Already Exists
+11/12/2024, 1:46:59 PM User Already Exists
+11/12/2024, 1:46:59 PM User Already Exists
+11/12/2024, 1:47:00 PM User Already Exists
+11/12/2024, 1:47:00 PM User Already Exists
+11/12/2024, 1:47:00 PM User Already Exists
+11/12/2024, 1:47:00 PM User Already Exists
+11/12/2024, 1:47:01 PM User Already Exists
+11/12/2024, 1:47:01 PM User Already Exists
+11/12/2024, 1:47:01 PM User Already Exists
+11/12/2024, 1:47:01 PM User Already Exists
+11/12/2024, 1:47:01 PM User Already Exists
+11/12/2024, 1:47:01 PM User Already Exists
+11/12/2024, 1:47:02 PM User Already Exists
+11/12/2024, 1:47:02 PM User Already Exists
+11/12/2024, 1:47:02 PM User Already Exists
+11/12/2024, 1:47:02 PM User Already Exists
+11/12/2024, 1:47:02 PM User Already Exists
+11/12/2024, 1:47:03 PM User Already Exists
+11/12/2024, 1:47:03 PM User Already Exists
+11/12/2024, 1:47:03 PM User Already Exists
+11/12/2024, 1:47:03 PM User Already Exists
+11/12/2024, 1:47:03 PM User Already Exists
+11/12/2024, 1:47:04 PM User Already Exists
+11/12/2024, 1:47:04 PM User Already Exists
+11/12/2024, 1:47:25 PM User Already Exists
+11/12/2024, 1:47:26 PM User Already Exists
+11/12/2024, 1:47:26 PM User Already Exists
+11/12/2024, 1:47:26 PM User Already Exists
+11/12/2024, 1:48:55 PM User Already Exists
+11/12/2024, 1:48:56 PM User Already Exists
+11/12/2024, 1:48:56 PM User Already Exists
+11/12/2024, 1:49:01 PM User Already Exists
+11/12/2024, 1:49:02 PM User Already Exists
+11/12/2024, 1:49:02 PM User Already Exists
+11/12/2024, 1:49:02 PM User Already Exists
+11/12/2024, 1:49:02 PM User Already Exists
+11/12/2024, 1:49:08 PM User Already Exists
+11/12/2024, 1:49:09 PM User Already Exists
+11/12/2024, 1:49:14 PM User Already Exists
+11/12/2024, 1:49:35 PM User Already Exists
+11/13/2024, 2:14:45 PM Check your password
+11/13/2024, 2:14:54 PM Check your password
+11/13/2024, 2:18:35 PM Check your password
+11/13/2024, 2:22:15 PM undefined
+11/13/2024, 2:24:07 PM Missing field: username
+11/13/2024, 2:24:14 PM Missing field: password
+11/13/2024, 2:25:27 PM No user exists! Check username and try again
+11/13/2024, 2:25:41 PM Bad control character in string literal in JSON at position 23
+11/13/2024, 2:25:46 PM Bad control character in string literal in JSON at position 23
+11/13/2024, 2:26:07 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:26:08 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:26:14 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:26:15 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:26:15 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:26:16 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:28:07 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:30:26 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:30:32 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:30:34 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:32:38 PM Bad control character in string literal in JSON at position 33
+11/13/2024, 2:32:42 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:32:45 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:01 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:02 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:02 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:02 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:03 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:03 PM Bad control character in string literal in JSON at position 28
+11/13/2024, 2:33:15 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:15 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:15 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:16 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:16 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:16 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:16 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:16 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:17 PM Bad control character in string literal in JSON at position 17
+11/13/2024, 2:33:29 PM Bad control character in string literal in JSON at position 19
+11/13/2024, 2:33:30 PM Bad control character in string literal in JSON at position 19
+11/13/2024, 2:33:34 PM No user exists! Check username and try again
+11/13/2024, 2:33:35 PM No user exists! Check username and try again
+11/13/2024, 2:33:36 PM No user exists! Check username and try again
+11/13/2024, 2:33:36 PM No user exists! Check username and try again
+11/13/2024, 2:33:37 PM No user exists! Check username and try again
+11/13/2024, 2:33:37 PM No user exists! Check username and try again
+11/13/2024, 2:33:37 PM No user exists! Check username and try again
+11/13/2024, 2:33:37 PM No user exists! Check username and try again
+11/13/2024, 2:33:38 PM No user exists! Check username and try again
+11/13/2024, 2:33:38 PM No user exists! Check username and try again
+11/13/2024, 2:33:39 PM No user exists! Check username and try again
+11/13/2024, 2:33:39 PM No user exists! Check username and try again
+11/13/2024, 2:33:40 PM No user exists! Check username and try again
+11/13/2024, 2:33:46 PM No user exists! Check username and try again
+11/13/2024, 2:33:46 PM No user exists! Check username and try again
+11/13/2024, 2:33:47 PM No user exists! Check username and try again
+11/13/2024, 2:33:47 PM No user exists! Check username and try again
+11/13/2024, 2:34:17 PM No user exists! Check username and try again
+11/13/2024, 2:34:36 PM Missing field: usr
+11/13/2024, 2:34:40 PM Missing field: usr
+11/13/2024, 2:34:41 PM Missing field: usr
+11/13/2024, 2:34:41 PM Missing field: usr
+11/13/2024, 2:34:42 PM Missing field: usr
+11/13/2024, 2:34:55 PM Missing field: usr
+11/13/2024, 2:35:00 PM Missing field: usr
+11/13/2024, 2:35:04 PM Missing field: pwd
+11/13/2024, 2:35:06 PM Missing field: pwd
+11/13/2024, 2:35:06 PM Missing field: pwd
+11/13/2024, 2:35:07 PM Missing field: pwd
+11/13/2024, 2:35:13 PM No user exists! Check username and try again
+11/13/2024, 2:35:15 PM No user exists! Check username and try again
+11/13/2024, 2:37:17 PM No user exists! Check username and try again
+11/13/2024, 2:37:18 PM No user exists! Check username and try again
+11/13/2024, 2:37:52 PM No user exists! Check username and try again
+11/13/2024, 2:37:52 PM No user exists! Check username and try again
+11/13/2024, 2:37:53 PM No user exists! Check username and try again
+11/13/2024, 2:37:53 PM No user exists! Check username and try again
+11/13/2024, 2:37:54 PM No user exists! Check username and try again
+11/13/2024, 2:37:54 PM No user exists! Check username and try again
+11/13/2024, 2:38:28 PM No user exists! Check username and try again
+11/13/2024, 2:39:43 PM No user exists! Check username and try again
+11/13/2024, 2:40:03 PM No user exists! Check username and try again
+11/13/2024, 2:40:11 PM No user exists! Check username and try again
+11/13/2024, 2:40:23 PM No user exists! Check username and try again
+11/13/2024, 2:40:27 PM No user exists! Check username and try again
+11/13/2024, 2:41:00 PM Missing field: usr
+11/13/2024, 2:41:11 PM Missing field: usr
+11/13/2024, 2:41:12 PM Missing field: usr
+11/13/2024, 2:41:13 PM Missing field: usr
+11/13/2024, 2:41:17 PM No user exists! Check username and try again
+11/13/2024, 2:42:34 PM Missing field: usr
+11/13/2024, 2:45:10 PM No user exists! Check username and try again
+11/13/2024, 2:45:26 PM No user exists! Check username and try again
+11/13/2024, 2:46:05 PM No user exists! Check username and try again
+11/13/2024, 2:47:35 PM No user exists! Check username and try again
+11/13/2024, 2:48:32 PM No user exists! Check username and try again
+11/13/2024, 2:49:28 PM No user exists! Check username and try again
+11/13/2024, 2:49:47 PM No user exists! Check username and try again
+11/13/2024, 2:50:35 PM No user exists! Check username and try again
+11/13/2024, 2:50:47 PM No user exists! Check username and try again
+11/13/2024, 2:50:59 PM No user exists! Check username and try again
+11/13/2024, 2:51:14 PM No user exists! Check username and try again
+11/13/2024, 2:51:28 PM No user exists! Check username and try again
+11/13/2024, 2:51:56 PM [object Promise]
+11/13/2024, 2:52:16 PM No user exists! Check username and try again
+11/13/2024, 2:53:02 PM No user exists! Check username and try again
+11/13/2024, 2:56:23 PM usr is required.
+11/13/2024, 2:56:35 PM No user exists! Check username and try again
+11/13/2024, 2:56:48 PM No user exists! Check username and try again
+11/13/2024, 2:56:55 PM usr is required.
+11/13/2024, 2:57:02 PM usr is required.
+11/13/2024, 2:57:05 PM usr is required.
+11/13/2024, 2:57:39 PM No user exists! Check username and try again
+11/13/2024, 2:57:45 PM No user exists! Check username and try again
+11/13/2024, 2:57:45 PM No user exists! Check username and try again
+11/13/2024, 2:58:17 PM usr is not a valid email address.
+11/13/2024, 2:58:40 PM usr is not a valid email address.
+11/13/2024, 2:58:48 PM No user exists! Check username and try again
+11/13/2024, 2:58:54 PM No user exists! Check username and try again
+11/13/2024, 2:58:55 PM No user exists! Check username and try again
+11/13/2024, 2:58:56 PM No user exists! Check username and try again
+11/13/2024, 3:01:59 PM pwd is required.
+11/13/2024, 3:02:00 PM pwd is required.
+11/13/2024, 3:02:00 PM pwd is required.
+11/13/2024, 3:02:00 PM pwd is required.
+11/13/2024, 3:02:03 PM pwd must be at least 8 characters long.
+11/13/2024, 3:02:04 PM pwd must be at least 8 characters long.
+11/13/2024, 3:02:06 PM No user exists! Check username and try again
+11/13/2024, 3:02:11 PM usr is not a valid email address.
+11/13/2024, 3:16:14 PM Missing field: username
+11/13/2024, 3:16:26 PM username is not a valid email address.
+11/13/2024, 3:16:35 PM No user exists! Check username and try again
+11/13/2024, 3:16:46 PM No user exists! Check username and try again
+11/13/2024, 3:16:47 PM No user exists! Check username and try again
+11/13/2024, 3:21:37 PM No user exists! Check username and try again
+11/13/2024, 3:21:45 PM Database insertion failed: null value in column "username" of relation "users" violates not-null constraint
+11/13/2024, 3:22:23 PM Database insertion failed: null value in column "username" of relation "users" violates not-null constraint
+11/13/2024, 3:24:02 PM user is not defined
+11/13/2024, 3:24:32 PM User Already Exists
+11/13/2024, 3:24:37 PM No user exists! Check username and try again
+11/13/2024, 3:24:39 PM No user exists! Check username and try again
+11/13/2024, 3:25:02 PM user is not defined
+11/13/2024, 3:26:31 PM User Already Exists
+11/13/2024, 3:26:32 PM User Already Exists
+11/13/2024, 3:26:32 PM User Already Exists
+11/13/2024, 3:26:32 PM User Already Exists
+11/13/2024, 3:26:32 PM User Already Exists
+11/13/2024, 3:26:32 PM User Already Exists
+11/13/2024, 3:26:32 PM User Already Exists
+11/13/2024, 3:26:33 PM User Already Exists
+11/13/2024, 3:26:33 PM User Already Exists
+11/13/2024, 3:26:33 PM User Already Exists
+11/13/2024, 3:26:33 PM User Already Exists
+11/13/2024, 3:26:33 PM User Already Exists
+11/13/2024, 3:26:33 PM User Already Exists
+11/13/2024, 3:26:34 PM User Already Exists
+11/13/2024, 3:26:34 PM User Already Exists
+11/13/2024, 3:33:50 PM Database insertion failed: column "user_id" is of type integer but expression is of type text
+11/13/2024, 3:34:40 PM Database insertion failed: syntax error at or near "text"
+11/13/2024, 3:36:30 PM Database insertion failed: jsonData is not defined
+11/13/2024, 3:36:44 PM Database insertion failed: syntax error at or near "$"
+11/13/2024, 3:38:08 PM Database insertion failed: column "user_id" is of type integer but expression is of type text
+11/13/2024, 3:38:31 PM Database insertion failed: function jsonb_to_record(json) does not exist
+11/13/2024, 3:38:41 PM Database insertion failed: column "user_id" is of type integer but expression is of type text
+11/13/2024, 3:42:54 PM Database insertion failed: column "user_id" is of type integer but expression is of type text
+11/13/2024, 3:43:53 PM Database insertion failed: column "user_id" is of type integer but expression is of type text
+11/13/2024, 3:44:28 PM Database insertion failed: null value in column "user_id" of relation "users" violates not-null constraint
+11/13/2024, 3:45:22 PM User Already Exists
+11/13/2024, 3:45:26 PM User Already Exists
+11/13/2024, 3:45:32 PM Database insertion failed: duplicate key value violates unique constraint "users_pkey"
+11/13/2024, 3:49:05 PM Database insertion failed: INSERT has more expressions than target columns
+11/13/2024, 3:49:33 PM Database insertion failed: INSERT has more expressions than target columns
+11/13/2024, 3:51:12 PM Database insertion failed: INSERT has more expressions than target columns
+11/13/2024, 3:52:33 PM Database insertion failed: column "age" of relation "users" does not exist
+11/13/2024, 3:52:45 PM User Already Exists
+11/13/2024, 3:53:01 PM User Already Exists
+11/13/2024, 4:00:52 PM User Already Exists
+11/13/2024, 4:02:41 PM User Already Exists
+11/13/2024, 4:02:45 PM Database insertion failed: INSERT has more target columns than expressions
+11/13/2024, 4:09:59 PM User Already Exists
+11/13/2024, 4:09:59 PM User Already Exists
+11/13/2024, 4:10:00 PM User Already Exists

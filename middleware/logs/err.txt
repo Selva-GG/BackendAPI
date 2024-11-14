@@ -1,0 +1,77 @@
+11/13/2024, 5:31:27 PM User Already Exists
+11/13/2024, 5:31:28 PM User Already Exists
+11/13/2024, 5:31:28 PM User Already Exists
+11/13/2024, 5:31:28 PM User Already Exists
+11/13/2024, 5:31:34 PM password must be at least 8 characters long.
+11/13/2024, 5:31:40 PM User Already Exists
+11/13/2024, 5:33:13 PM userAuth is not defined
+11/13/2024, 5:33:22 PM userAuth is not defined
+11/13/2024, 5:33:58 PM userAuth is not defined
+11/13/2024, 5:34:10 PM userAuth is not defined
+11/13/2024, 5:34:13 PM userAuth is not defined
+11/13/2024, 5:34:14 PM userAuth is not defined
+11/13/2024, 5:34:14 PM userAuth is not defined
+11/13/2024, 5:34:30 PM Check your password
+11/13/2024, 5:35:05 PM No user exists! Check username and try again
+11/13/2024, 5:35:25 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
+11/13/2024, 5:35:44 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
+11/13/2024, 5:36:14 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
+11/13/2024, 5:36:44 PM Database insertion failed: null value in column "password" of relation "users" violates not-null constraint
+11/13/2024, 5:41:40 PM No user exists! Check username and try again
+11/13/2024, 5:41:46 PM Database insertion failed: INSERT has more expressions than target columns
+11/13/2024, 5:41:53 PM Database insertion failed: INSERT has more target columns than expressions
+11/13/2024, 5:44:04 PM User Already Exists
+11/13/2024, 5:44:10 PM jsonData is not defined
+11/13/2024, 5:46:36 PM jsonData is not defined
+11/13/2024, 5:48:29 PM Database insertion failed: INSERT has more expressions than target columns
+11/13/2024, 5:49:50 PM User Already Exists
+11/13/2024, 5:50:18 PM User Already Exists
+11/13/2024, 5:51:25 PM User Already Exists
+11/13/2024, 5:54:08 PM User Already Exists
+11/13/2024, 5:54:17 PM User Already Exists
+11/13/2024, 6:10:56 PM User Already Exists
+11/13/2024, 6:11:09 PM Database insertion failed: syntax error at or near "["
+11/13/2024, 6:12:29 PM Database insertion failed: syntax error at or near "["
+11/13/2024, 6:13:43 PM Database insertion failed: syntax error at or near "$1"
+11/13/2024, 6:14:04 PM Database insertion failed: syntax error at or near "["
+11/13/2024, 6:14:18 PM Database insertion failed: syntax error at or near "["
+11/13/2024, 6:14:19 PM Database insertion failed: syntax error at or near "["
+11/13/2024, 6:14:31 PM Database insertion failed inseer: syntax error at or near "["
+11/13/2024, 6:14:44 PM Database insertion failed : undefined
+11/13/2024, 6:14:49 PM Database insertion failed : error: syntax error at or near "["
+11/13/2024, 6:15:03 PM Database insertion failed : undefined
+11/13/2024, 6:15:08 PM Database insertion failed : syntax error at or near "["
+11/13/2024, 6:15:30 PM Database insertion failed : syntax error at or near "["
+11/13/2024, 6:16:01 PM Database insertion failed : syntax error at or near "["
+11/13/2024, 6:16:18 PM Database insertion failed : syntax error at or near "$1"
+11/13/2024, 6:16:21 PM Database insertion failed : syntax error at or near "$1"
+11/13/2024, 6:17:08 PM Database insertion failed: column "firstname" of relation "users" does not exist
+11/13/2024, 6:18:22 PM User Already Exists
+11/13/2024, 6:18:24 PM User Already Exists
+11/13/2024, 6:19:28 PM Database insertion failed: syntax error at or near "user"
+11/13/2024, 6:19:38 PM Database insertion failed: syntax error at or near "user"
+11/13/2024, 6:21:02 PM Database insertion failed: syntax error at or near "$1"
+11/13/2024, 6:26:49 PM DBController.insert is not a function
+11/13/2024, 6:27:17 PM Database insertion failed: could not determine data type of parameter $1
+11/13/2024, 6:27:36 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
+11/13/2024, 6:27:58 PM Expected property name or '}' in JSON at position 4
+11/13/2024, 6:28:08 PM Expected ':' after property name in JSON at position 14
+11/13/2024, 6:28:14 PM User Already Exists
+11/13/2024, 6:29:33 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
+11/13/2024, 6:29:51 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
+11/13/2024, 6:32:57 PM User Already Exists
+11/13/2024, 6:33:16 PM Database insertion failed: invalid input syntax for type integer: "{"user_id": 186}"
+11/13/2024, 6:33:16 PM User Already Exists
+11/13/2024, 6:33:21 PM Database insertion failed: invalid input syntax for type integer: "{"user_id": 187}"
+11/13/2024, 6:34:16 PM User Already Exists
+11/13/2024, 6:35:04 PM User Already Exists
+11/13/2024, 6:35:18 PM User Already Exists
+11/13/2024, 6:53:36 PM User Already Exists
+11/13/2024, 6:53:37 PM User Already Exists
+11/13/2024, 6:53:42 PM DBController.insertUser is not a function
+11/13/2024, 6:55:07 PM Database insertion failed: column "userid" of relation "user_details" does not exist
+11/13/2024, 6:55:23 PM Database insertion failed: relation "inserted_user" does not exist
+11/13/2024, 6:55:43 PM Database insertion failed: WITH query "user_cred_insert" does not have a RETURNING clause
+11/13/2024, 6:56:09 PM Database insertion failed: column reference "user_id" is ambiguous
+11/13/2024, 6:56:28 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint
+11/13/2024, 6:56:47 PM Database insertion failed: null value in column "user_id" of relation "user_details" violates not-null constraint

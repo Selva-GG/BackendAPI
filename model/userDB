@@ -1,0 +1,17 @@
+const fsp = require("fs").promises;
+const path = require("path");
+
+const userDB = {
+  users: require("../modal/usersData.json"),
+  setUsers: async function (data) {
+    this.users = data;
+    await fsp.writeFile(
+      path.join(__dirname, "..", "modal", "usersData.json"),
+      JSON.stringify(this.users)
+    );
+  },
+  get keys() {
+    return this.users.map((cred) => cred.username);
+  },
+};
+module.exports = userDB;
