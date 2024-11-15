@@ -1,9 +1,7 @@
-import Pool from "pg";
+import  pgp from "pg-promise";
 
-export default new Pool.Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "userdb",
-  password: "",
-  port: 5432,
-});
+
+const cn = 'postgres://postgres:@localhost:5432/userdb';
+
+
+export default pgp({})(cn)
