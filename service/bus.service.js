@@ -17,14 +17,23 @@ export default class BusService {
   };
 
   static searchBus = async (req, res, next) => {
-    let bus_name = req.params.id;
+    let { bus_id, date } = req.body;
+    const travelDate = date || new Date().toISOString().split("T")[0];
     try {
-      let bus = await BusRepository.findBus("bus_name", bus_name);
+      let bus = await BusRepository.findBus("bus_id", bus_id);
       if (!bus) {
         throw new ErrorResponse("Bus is not available", 403);
       }
-      let seats = await SeatsRepository.seatDetails(bus.bus_id);
-      req.bus = { bus, seats };
+      let seats = await SeatsRepository.basicDetail(bus_id, travelDate);
+      req.bus = {
+        bus,
+        seatDetails: {
+          "Total seats": seats.total_seats,
+          "Booked Seats": seats.booked_seats,
+          "Pending Seats": seats.pending_seats,
+          "Available Seats": seats.available_seats,
+        },
+      };
       next();
     } catch (err) {
       return next(err);
@@ -37,11 +46,11 @@ export default class BusService {
       if (!buses) {
         req.status(203).json({ message: "No Buses Found" });
       }
-      console.log(buses);
       req.buses = buses;
       next();
     } catch (err) {
       return next(err);
     }
   };
+
 }

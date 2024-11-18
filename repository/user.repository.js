@@ -30,6 +30,7 @@ export default class UserRepository {
       return "DBError" + err.message;
     }
   }
+  
   static async insert(data) {
     const { username, password, ...userDetails } = data;
     const userJsonData = JSON.stringify({ username, password });

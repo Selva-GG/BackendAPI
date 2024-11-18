@@ -7,7 +7,7 @@ router.post("/create", BusService.insertBus, (req, res) => {
   res.status(201).json({ message: "Bus is created", bus: req.bus });
 });
 
-router.get("/:id", BusService.searchBus, (req, res) => {
+router.get("/search", BusService.searchBus, (req, res) => {
   res.status(201).json({ message: " Searched Bus", data: req.bus });
 });
 
