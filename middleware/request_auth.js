@@ -19,12 +19,14 @@ const request_auth = async (req, res, next) => {
     }
     let timeInMIlliseconds = new Date(result.expiring_at).getTime();
     if (timeInMIlliseconds < Date.now()) {
+
       //   throw new ErrorResponse("Token Expired" , 401);
+
       let new_details = await AuthRepository.updateAccessToken(
         result.user_id,
         result.refresh_token
       );
-      return res.status(201).json({ new_details });
+      return res.status(201).json({ ...new_details });
     }
     req.user_id = result.user_id;
     req.access_token = result.access_token;

@@ -23,7 +23,7 @@ export default class AuthRepository {
     access_token = gen_random_uuid(),
     expiring_at = NOW() + INTERVAL '1 minute'
     WHERE 
-    user_id = $1 and refresh_token = $2
+    user_id = $1 and refresh_token = $2``
     returning *;
     `;
     try {

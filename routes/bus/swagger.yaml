@@ -1,0 +1,30 @@
+openapi: 3.0.3
+
+info:
+  title: Booking API
+  description: "This is docs for the devices and management api"
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+
+tags:
+  - name: BUS
+    description: Paths related to BUS
+
+paths:
+  /bus:
+    get:
+      summary: Get all buses
+      security:
+        - BearerAuth: []
+      tags:
+        - BUS
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:

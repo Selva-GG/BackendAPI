@@ -56,11 +56,7 @@ export default class UserRepository {
     `;
 
     try {
-      let result = await db.one(query, [userJsonData, userDetailsJsonData]);
-      let access_token = await AuthRepository.generateAccessToken(
-        result.user_id
-      );
-      return { access_token: access_token, user: result };
+      return await db.one(query, [userJsonData, userDetailsJsonData]);
     } catch (err) {
       throw new Error(`Database insertion failed: ${err.message}`);
     }

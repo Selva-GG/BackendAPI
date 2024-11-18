@@ -6,51 +6,45 @@ import bcrypt from "bcrypt";
 export default class UserService {
   static checkUserExists = async (req, res, next) => {
     const { username, password, ...body } = req.body;
-    try {
-      let response = await userRepository.findUser(
-        "users",
-        "username",
-        username
-      );
-      if (response) {
-        throw new ErrorResponse("User Already Exists", 409);
-      }
 
-      let hashedPassword = await bcrypt.hash(password, 10);
-      const user = { username, password: hashedPassword, ...body };
-      req.user = await userRepository.insert(user);
+    try {
+      (await userRepository.findUser("users", "username", username))
+        ? next(new ErrorResponse("User Already Exists", 409))
+        : null;
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await userRepository.insert({
+        username,
+        password: hashedPassword,
+        ...body,
+      });
+      req.user = {
+        access_token: await AuthRepository.generateAccessToken(user.user_id),
+        user,
+      };
+
       next();
     } catch (err) {
-      return next(err);
+      next(err);
     }
   };
 
   static checkCredentials = async (req, res, next) => {
     const { username, password } = req.body;
-    try {
-      let response = await userRepository.findUser(
-        "users",
-        "username",
-        username
-      );
-      if (!response) {
-        throw new ErrorResponse(
-          "No user exists! Check username and try again",
-          403
-        );
-      } else {
-        let userAuth =
-          response.username === username &&
-          (await bcrypt.compare(password, response.password));
-        if (!userAuth) {
-          throw new ErrorResponse("Check your password", 401);
-        }
-        req.user = await AuthRepository.generateAccessToken(response.user_id);
 
-        next();
+    try {
+      const user = await userRepository.findUser("users", "username", username);
+      if (!user || !(await bcrypt.compare(password, user.password))) {
+        return next(new ErrorResponse("Invalid username or password", 403));
       }
+
+      req.user = {
+        access_token: await AuthRepository.generateAccessToken(user.user_id),
+        user,
+      };
+
+      next();
     } catch (err) {
-      return next(err);
+      next(err);
     }
   };
 
