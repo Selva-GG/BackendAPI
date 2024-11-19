@@ -4,7 +4,7 @@ import userRouter from "./routes/users/user.js";
 import busRouter from "./routes/bus/bus.js";
 import bookingRouter from "./routes/booking/booking.js";
 import docsRouter from "./routes/api-docs/api.js";
-import routesRouter from "./routes/book_routes/routes.route.js";
+import routesRouter from "./routes/routes/routes.route.js";
 import express from "express";
 import cors from "cors";
 

@@ -49,6 +49,7 @@ export default class RoutesService {
           bus_detail.seatDetails = await BusRepository.basicDetail(
             bus.bus_id,
             date
+            
           );
           return bus_detail;
         })
