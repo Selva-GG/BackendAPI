@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Test",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Bus",
+      "description": "Bus API documentation"
+    }
+  ],
+  "paths": {
+    "/bus/search": {
+      "post": {
+        "tags": ["Bus"],
+        "summary": "Search Bus with summary of seats",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Search"
+        },
+        "responses": {
+          "201": {
+            "description": "Fetched bus's seats on specific date successfully ",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/bus/seats": {
+      "post": {
+        "tags": ["Bus"],
+        "summary": "Search detailed seats overview",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Search"
+        },
+        "responses": {
+          "201": {
+            "description": "Fetched detailed seats overview",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/bus": {
+      "get": {
+        "tags": ["Bus"],
+        "summary": "List all buses",
+        "responses": {
+          "201": {
+            "description": "Listed all the buses successfully",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "requestBodies": {
+      "Search": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Search"
+            },
+            "example": {
+              "bus_id": 4,
+              "date": "2024-11-19"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Search": {
+        "type": "object",
+        "properties": {
+          "bus_id": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

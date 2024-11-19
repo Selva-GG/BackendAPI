@@ -2,7 +2,6 @@ import db from "../db/db.js";
 import ErrorResponse from "../model/error.model.js";
 
 export default class BookingRepository {
-
   static async getUserBookings(user_id) {
     const query = `
     With combined_records as (
@@ -52,6 +51,19 @@ RETURNING *;
       return await db.oneOrNone(query, [schedule_id]);
     } catch (err) {
       throw new ErrorResponse(`Db cancel seat failed ${err.message} `, 466);
+    }
+  }
+
+  static async Book(user_id, bus_id, seat_id, date) {
+    let query = `
+    INSERT INTO seat_schedule (bus_id, seat_id, travel_date, status , user_id) 
+    VALUES ($1, $2, $3, 'Booked',$4) 
+    RETURNING *;
+`;
+    try {
+      return await db.oneOrNone(query, [bus_id, seat_id, date, user_id]);
+    } catch (err) {
+      throw new ErrorResponse(` Db Booking seat failed ${err.message}`, 466);
     }
   }
   

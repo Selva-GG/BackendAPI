@@ -1,9 +1,7 @@
-import { use } from "bcrypt/promises.js";
 import BookingRepository from "../repository/booking.repository.js";
-import SeatsRepository from "../repository/seats.repository.js";
+import BusRepository from "../repository/bus.repository.js";
 
 export default class BookingService {
-
   static userBookings = async (req, res, next) => {
     let user_id = req.params.id;
     try {
@@ -23,7 +21,7 @@ export default class BookingService {
   static cancelBooking = async (req, res, next) => {
     let { schedule_id } = req.body;
     try {
-      let seatExists = await SeatsRepository.findSeat(
+      let seatExists = await BusRepository.findSeats(
         "schedule_id",
         schedule_id
       );
@@ -38,5 +36,29 @@ export default class BookingService {
       return next(err);
     }
   };
-  
+
+  static book = async (req, res, next) => {
+    let { user_id, seat_id, bus_id, date } = req.body;
+    const travelDate = date || new Date().toISOString().split("T")[0];
+    try {
+      let seatExists = await BusRepository.findSeats(
+        ["seat_id", "bus_id", "travel_date"],
+        [seat_id, bus_id, travelDate]
+      );
+      if (seatExists) {
+        return res
+          .status(405)
+          .json({ message: "Seat is already booked for specific date" });
+      }
+      req.response = await BookingRepository.Book(
+        user_id,
+        bus_id,
+        seat_id,
+        travelDate
+      );
+      next();
+    } catch (err) {
+      return next(err);
+    }
+  };
 }

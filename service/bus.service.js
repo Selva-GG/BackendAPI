@@ -1,6 +1,5 @@
 import ErrorResponse from "../model/error.model.js";
 import BusRepository from "../repository/bus.repository.js";
-import SeatsRepository from "../repository/seats.repository.js";
 
 export default class BusService {
   static insertBus = async (req, res, next) => {
@@ -24,7 +23,7 @@ export default class BusService {
       if (!bus) {
         throw new ErrorResponse("Bus is not available", 403);
       }
-      let seats = await SeatsRepository.basicDetail(bus_id, travelDate);
+      let seats = await BusRepository.basicDetail(bus_id, travelDate);
       req.bus = {
         bus,
         seatDetails: {
@@ -53,4 +52,21 @@ export default class BusService {
     }
   };
 
+  static showSeatDetails = async (req, res, next) => {
+    let { bus_id, date } = req.body;
+    const travelDate = date || new Date().toISOString().split("T")[0];
+
+    try {
+      let seats = await BusRepository.seatDetails(bus_id, travelDate);
+      if (!seats) {
+        return res
+          .status(405)
+          .json({ message: "Error occurred while fetching the seat" });
+      }
+      req.seats = seats;
+      next();
+    } catch (err) {
+      return next(err);
+    }
+  };
 }

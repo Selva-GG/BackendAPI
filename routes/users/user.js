@@ -2,18 +2,10 @@ import express from "express";
 import userService from "../../service/user.service.js";
 import requestAuth from "../../middleware/request_auth.js";
 import swaggerValidation from "openapi-validator-middleware";
+import swagger from "./user.swagger.json" assert { type: "json" };
 const router = express.Router();
-import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-swaggerValidation.init("./swagger.yaml");
-
-const userValidation = swaggerValidation.getNewMiddleware(
-  "./swagger.yaml"
-);
+const userValidation = swaggerValidation.getNewMiddleware(swagger);
 
 router.post(
   "/login",

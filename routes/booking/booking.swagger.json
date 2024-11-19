@@ -1,0 +1,145 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Test",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Bookings",
+      "description": "Booking documentation"
+    }
+  ],
+  "paths": {
+    "/bookings/book": {
+      "post": {
+        "tags": ["Bookings"],
+        "summary": "Book seat any day",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Booking"
+        },
+        "responses": {
+          "201": {
+            "description": "Booked seat successfully",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/bookings/{id}": {
+      "get": {
+        "tags": ["Bookings"],
+        "summary": "User-History",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UserIdParam"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully fetched user-history",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/bookings/cancel": {
+      "post": {
+        "tags": ["Bookings"],
+        "summary": "Cancel ticket",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Cancel"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "UserIdParam": {
+        "name": "id",
+        "in": "path",
+        "description": "Provide **Particular ID**\n",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "example": 241
+        }
+      }
+    },
+    "requestBodies": {
+      "Booking": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Booking"
+            },
+            "example": {
+              "seat_id": 11,
+              "bus_id": 4,
+              "date": "2024-11-19",
+              "user_id": 241
+            }
+          }
+        }
+      },
+      "Cancel": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Cancel"
+            },
+            "example": {
+              "schedule_id": 21
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Cancel": {
+        "type": "object",
+        "properties": {
+          "schedule_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Booking": {
+        "type": "object",
+        "properties": {
+          "seat_id": {
+            "type": "integer"
+          },
+          "bus_id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

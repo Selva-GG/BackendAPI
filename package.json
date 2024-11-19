@@ -15,11 +15,8 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.21.1",
-    "express-openapi-validate": "^0.6.1",
-    "express-openapi-validator": "^5.3.9",
     "openapi-validator-middleware": "^3.2.6",
     "pg-promise": "^11.10.2",
-    "sillyname": "^0.1.0",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
