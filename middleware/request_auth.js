@@ -4,6 +4,7 @@ import UserRepository from "../repository/user.repository.js";
 
 const request_auth = async (req, res, next) => {
   let req_token = req.headers.authorization;
+  console.log(req_token)
   let token = req_token.startsWith("Bearer ") ? req_token.slice(7) : req_token;
   if (!token) {
     throw new ErrorResponse("Add bearer Token to the header", 401);

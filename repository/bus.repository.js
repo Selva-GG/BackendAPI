@@ -103,7 +103,7 @@ WHERE
     s.bus_id = $1;`;
 
     try {
-      return db.oneOrNone(query, [bus_id, date]);
+      return await db.oneOrNone(query, [bus_id, date]);
     } catch (err) {
       throw new ErrorResponse(
         "DB basic Seat details fetch error " + err.message,

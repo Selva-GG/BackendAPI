@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Users API",
-    "description": "This is docs for the devices and management api",
+    "title": "Booking API",
+    "description": "This is docs for the booking and management api",
     "version": "1.0.0"
   },
   "servers": [
@@ -12,7 +12,7 @@
   ],
   "tags": [
     {
-      "name": "USERS",
+      "name": "Users",
       "description": "Users documentation"
     },
     {
@@ -29,7 +29,7 @@
       "post": {
         "summary": "Login user",
         "description": "Authenticates a user",
-        "tags": ["USERS"],
+        "tags": ["Users"],
         "requestBody": {
           "$ref": "#/components/requestBodies/Login"
         },
@@ -54,7 +54,7 @@
       "post": {
         "summary": "Register user",
         "description": "Creates a new user",
-        "tags": ["USERS"],
+        "tags": ["Users"],
         "requestBody": {
           "$ref": "#/components/requestBodies/Register"
         },
