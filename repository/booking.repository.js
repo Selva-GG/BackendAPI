@@ -44,7 +44,7 @@ COMMIT;
 
 DELETE FROM seat_schedule
 WHERE schedule_id = $1
-RETURNING *;  
+RETURNING * , 'Cancelled' as status;  
 
     `;
     try {
@@ -66,5 +66,4 @@ RETURNING *;
       throw new ErrorResponse(` Db Booking seat failed ${err.message}`, 466);
     }
   }
-  
 }
