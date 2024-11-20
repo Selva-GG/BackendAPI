@@ -5,7 +5,7 @@ export default class CheckService {
   static validBus = async (req, res, next) => {
     let { bus_id } = req.body;
     try {
-      let busFound = await BusRepository.findBus("bus_id", bus_id);
+      let busFound = await BusRepository.findBus({ bus_id });
       if (!busFound) {
         return res.status(209).json({
           message: `No bus is with the id -> ${bus_id}`,

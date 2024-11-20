@@ -1,16 +1,11 @@
 import db from "../db/db.js";
 import AuthRepository from "./auth.repository.js";
 import ErrorResponse from "../model/error.model.js";
+import BaseRepository from "./base.repository.js";
 
-
-export default class UserRepository {
-  static async findUser(tableName, columnName, param) {
-    const query = `SELECT * FROM ${tableName} WHERE ${columnName} = $1 LIMIT 1`;
-    try {
-      return await db.oneOrNone(query, [param]);
-    } catch (err) {
-      throw new ErrorResponse(`Database query failed: ${err.message}`, 466);
-    }
+export default class UserRepository extends BaseRepository {
+  static async findUser(options) {
+    return await this.find("users", options);
   }
 
   static async deleteUserSession(access_token) {
@@ -30,7 +25,7 @@ export default class UserRepository {
       return "DBError" + err.message;
     }
   }
-  
+
   static async insert(data) {
     const { username, password, ...userDetails } = data;
     const userJsonData = JSON.stringify({ username, password });

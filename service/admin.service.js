@@ -55,7 +55,7 @@ export default class RoutesService {
   static insertBus = async (req, res, next) => {
     let { bus_name, capacity, type } = req.body;
     try {
-      if (await BusRepository.findBus("bus_name", bus_name)) {
+      if (await BusRepository.findBus({ bus_name })) {
         throw new ErrorResponse("Bus name not available", 403);
       }
       req.bus = await AdminRepository.insertBus(bus_name, capacity, type);

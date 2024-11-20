@@ -1,36 +1,13 @@
 import db from "../db/db.js";
 import ErrorResponse from "../model/error.model.js";
+import BaseRepository from "./base.repository.js";
 
-export default class BusRepository {
-  static async findBus(columnName, value) {
-    const query = `SELECT * FROM bus WHERE ${columnName} = $1 LIMIT 1`;
-    try {
-      return await db.oneOrNone(query, [value]);
-    } catch (err) {
-      throw new ErrorResponse(`Database query failed: ${err.message}`, 466);
-    }
+export default class BusRepository extends BaseRepository {
+  static async findBus(options) {
+    return await this.find("bus", options);
   }
-  static async findSeats(columnName, value) {
-    let columns, values;
-    if (Array.isArray(columnName) && Array.isArray(value)) {
-      const conditions = columnName.map(
-        (col, index) => `${col} = $${index + 1}`
-      );
-      columns = conditions.join(" AND ");
-      values = value;
-    } else {
-      columns = `${columnName} = $1`;
-      values = [value];
-    }
-    const query = `SELECT * FROM seat_schedule WHERE ${columns}  LIMIT 1`;
-    try {
-      return await db.oneOrNone(query, values);
-    } catch (err) {
-      throw new ErrorResponse(
-        `Database search seat failed: ${err.message}`,
-        466
-      );
-    }
+  static async findSeats(options) {
+    return await this.find("seat_schedule", options);
   }
 
   static async seatDetails(bus_id, date) {

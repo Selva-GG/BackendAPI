@@ -22,10 +22,7 @@ export default class BookingService {
   static cancelBooking = async (req, res, next) => {
     let { schedule_id } = req.body;
     try {
-      let seatExists = await BusRepository.findSeats(
-        "schedule_id",
-        schedule_id
-      );
+      let seatExists = await BusRepository.findSeats({ schedule_id });
       if (!seatExists) {
         return res.status(403).json({
           message: `No such seat exists with schedule_id : ${schedule_id}`,
@@ -41,10 +38,11 @@ export default class BookingService {
   static book = async (req, res, next) => {
     let { user_id, seat_id, bus_id, date } = req.body;
     try {
-      let seatExists = await BusRepository.findSeats(
-        ["seat_id", "bus_id", "travel_date"],
-        [seat_id, bus_id, date]
-      );
+      let seatExists = await BusRepository.findSeats({
+        seat_id,
+        bus_id,
+        travel_date: date,
+      });
       if (seatExists) {
         return res
           .status(405)
@@ -79,7 +77,9 @@ export default class BookingService {
     try {
       let buses_details = await Promise.all(
         buses.map(async (bus) => {
-          const bus_detail = await BusRepository.findBus("bus_id", bus.bus_id);
+          const bus_detail = await BusRepository.findBus({
+            bus_id: bus.bus_id,
+          });
           bus_detail.seatDetails = await BusRepository.basicDetail(
             bus.bus_id,
             date

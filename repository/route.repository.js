@@ -1,7 +1,8 @@
 import ErrorResponse from "../model/error.model.js";
 import db from "../db/db.js";
+import BaseRepository from "./base.repository.js";
 
-export default class RouteRepository {
+export default class RouteRepository extends BaseRepository {
   static async findRouteSchedule(tableName, options, date) {
     let columns = Object.keys(options);
     let values = Object.values(options);
@@ -46,18 +47,6 @@ export default class RouteRepository {
     }
   }
   static async findRoute(options) {
-    let columns = Object.keys(options);
-    let values = Object.values(options);
-    let conditions = columns
-      .map((col, index) => `${col} = $${index + 1}`)
-      .join(" AND ");
-
-    const query = `Select * from routes where ${conditions}  `;
-
-    try {
-      return await db.oneOrNone(query, [...values]);
-    } catch (err) {
-      throw new ErrorResponse("DB failed in search route " + err.message, 466);
-    }
+    return await this.find("routes", options);
   }
 }

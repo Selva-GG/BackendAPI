@@ -15,20 +15,33 @@ export default class AuthRepository {
       console.log("Error in in generating new token" + err);
     }
   }
-
-  static async updateAccessToken(user_id, refresh_token) {
+  static async checkValidToken(token) {
+    let tokenKey = Object.keys(token).join("");
+    let tokenValue = Object.values(token).join("");
+    let query = `
+    SELECT 1 from auth_token where ${tokenKey} = $1
+    `;
+    try {
+      return db.oneOrNone(query, [tokenValue]);
+    } catch (err) {
+      throw new ErrorResponse(
+        "Db failed in checking the token " + err.message,
+        466
+      );
+    }
+  }
+  static async updateAccessToken(refresh_token) {
     let query = `
     UPDATE auth_token 
     SET 
     access_token = gen_random_uuid(),
     expiring_at = NOW() + INTERVAL '1 minute'
     WHERE 
-    user_id = $1 and refresh_token = $2``
+    refresh_token = $2``
     returning *;
     `;
     try {
       let { access_token, expiring_at } = await db.oneOrNone(query, [
-        user_id,
         refresh_token,
       ]);
       return { access_token, expiring_at };
