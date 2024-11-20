@@ -9,6 +9,8 @@ const router = express.Router();
 
 const bookingValidation = swaggerValidation.getNewMiddleware(swagger);
 
+router.use(request_auth);
+
 router.get("/:id", BookingService.userBookings, (req, res) => {
   res.status(201).json({ message: "User Bookings", data: req.bookings });
 });

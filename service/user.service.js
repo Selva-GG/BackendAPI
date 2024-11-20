@@ -1,6 +1,7 @@
 import AuthRepository from "../repository/auth.repository.js";
 import ErrorResponse from "../model/error.model.js";
 import userRepository from "../repository/user.repository.js";
+import dateFormat from "date-format";
 import bcrypt from "bcrypt";
 
 export default class UserService {
@@ -78,6 +79,20 @@ export default class UserService {
       let validToken = await AuthRepository.checkValidToken(req.body);
       if (!validToken) {
         return res.status(403).json({ message: "Invalid Token" });
+      }
+      console.log(validToken);
+      let timeInMIlliseconds = new Date(validToken.expiring_at).getTime();
+      if (timeInMIlliseconds > Date.now()) {
+        return res.status(409).json({
+          message: "Existing Token is not expired",
+          token: {
+            access_token: validToken.access_token,
+            expiring_at: dateFormat(
+              "dd-mm-yyyy hh:mm:ss",
+              validToken.expiring_at
+            ),
+          },
+        });
       }
       req.new_token = await AuthRepository.updateAccessToken(
         req.body.refresh_token

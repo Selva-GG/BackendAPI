@@ -87,6 +87,11 @@
       "post": {
         "tags": ["Users"],
         "summary": "Logout the user session",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -326,10 +331,5 @@
         }
       }
     }
-  },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ]
+  }
 }
