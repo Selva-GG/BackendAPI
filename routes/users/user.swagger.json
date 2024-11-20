@@ -12,7 +12,7 @@
   ],
   "tags": [
     {
-      "name": "USERS",
+      "name": "Users",
       "description": "Users documentation"
     }
   ],
@@ -21,7 +21,7 @@
       "post": {
         "summary": "Login user",
         "description": "Authenticates a user",
-        "tags": ["USERS"],
+        "tags": ["Users"],
         "requestBody": {
           "$ref": "#/components/requestBodies/Login"
         },
@@ -46,7 +46,7 @@
       "post": {
         "summary": "Register user",
         "description": "Creates a new user",
-        "tags": ["USERS"],
+        "tags": ["Users"],
         "requestBody": {
           "$ref": "#/components/requestBodies/Register"
         },
@@ -63,6 +63,75 @@
           },
           "500": {
             "description": "Server error"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Logout the user session",
+        "responses": {
+          "201": {
+            "description": "successful Logout"
+          }
+        }
+      }
+    },
+    "/delete": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Logout the user session",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "user_id": 241
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful Logout"
+          }
+        }
+      }
+    },
+    "/refresh": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Creates new access token after expiration",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refresh_token": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "refresh_token": "Random_UUID"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created new access token"
           }
         }
       }

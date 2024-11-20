@@ -16,6 +16,23 @@
     }
   ],
   "paths": {
+    "/bookings": {
+      "post": {
+        "tags": ["Bookings"],
+        "summary": "Search buses from a to b ",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Search"
+        },
+        "responses": {
+          "201": {
+            "description": "Fetched buses from a to b successfully",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
     "/bookings/book": {
       "post": {
         "tags": ["Bookings"],
@@ -60,7 +77,24 @@
           "$ref": "#/components/requestBodies/Cancel"
         },
         "responses": {
-          "200": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/bookings/seats": {
+      "post": {
+        "tags": ["Bookings"],
+        "summary": "Search for seats in specified bus",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Seats"
+        },
+        "responses": {
+          "201": {
             "description": "Successful response",
             "content": {
               "application/json": {}
@@ -84,6 +118,35 @@
       }
     },
     "requestBodies": {
+      "Search": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Search"
+            },
+            "example": {
+              "start_place": "Chennai",
+              "destn_place": "Bengaluru",
+              "date": "2024-11-19"
+            }
+          }
+        }
+      },
+      "Seats": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Seats"
+            },
+            "example": {
+              "bus_id": 4,
+              "date": "2024-11-19"
+            }
+          }
+        }
+      },
       "Booking": {
         "required": true,
         "content": {
@@ -115,6 +178,33 @@
       }
     },
     "schemas": {
+      "Search": {
+        "type": "object",
+        "properties": {
+          "start_place": {
+            "type": "string"
+          },
+          "destn_place": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          }
+        },
+        "required": ["start_place", "destn_place", "date"]
+      },
+      "Seats": {
+        "type": "object",
+        "properties": {
+          "bus_id": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          }
+        },
+        "required": ["bus_id", "date"]
+      },
       "Cancel": {
         "type": "object",
         "properties": {
