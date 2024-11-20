@@ -2,7 +2,7 @@ import db from "../db/db.js";
 import ErrorResponse from "../model/error.model.js";
 
 export default class BaseRepository {
-  static async find(tableName, options) {
+  static async unique(tableName, options) {
     let columns = Object.keys(options);
     let values = Object.values(options);
     let conditions = columns
@@ -13,7 +13,7 @@ export default class BaseRepository {
     SELECT * from ${tableName} where ${conditions}`;
 
     try {
-      return await db.manyOrNone(query, values);
+      return await db.oneOrNone(query, values);
     } catch (err) {
       throw new ErrorResponse(
         `Db failed in searching the record in ${tableName} ${err.message}`,

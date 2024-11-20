@@ -5,7 +5,7 @@ import BaseRepository from "./base.repository.js";
 
 export default class UserRepository extends BaseRepository {
   static async findUser(options) {
-    return await this.find("users", options);
+    return await this.unique("users", options);
   }
 
   static async deleteUserSession(access_token) {

@@ -4,10 +4,14 @@ import BaseRepository from "./base.repository.js";
 
 export default class BusRepository extends BaseRepository {
   static async findBus(options) {
-    return await this.find("bus", options);
+    return await this.unique("bus", options);
   }
   static async findSeats(options) {
-    return await this.find("seat_schedule", options);
+    return await this.unique("seat_schedule", options);
+  }
+
+  static async seatExists(options) {
+    return await this.unique("seats", options);
   }
 
   static async seatDetails(bus_id, date) {

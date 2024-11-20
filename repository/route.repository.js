@@ -47,6 +47,6 @@ export default class RouteRepository extends BaseRepository {
     }
   }
   static async findRoute(options) {
-    return await this.find("routes", options);
+    return await this.unique("routes", options);
   }
 }

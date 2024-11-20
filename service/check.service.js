@@ -39,4 +39,19 @@ export default class CheckService {
       return next(err);
     }
   };
+
+  static validSeat = async (req, res, next) => {
+    let { seat_id } = req.body;
+    try {
+      let seatExists = await BusRepository.seatExists({ seat_id });
+      if (!seatExists) {
+        return res
+          .status(409)
+          .json({ message: `No seat exists with this seat id ${seat_id}` });
+      }
+      next();
+    } catch (err) {
+      return next(err);
+    }
+  };
 }

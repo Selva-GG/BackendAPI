@@ -21,6 +21,7 @@ router.post(
   "/book",
   CheckService.validBus,
   CheckService.validRoute_assigned,
+  CheckService.validSeat,
   BookingService.book,
   (req, res) => {
     res.status(201).json({ message: "Seat Booked", data: req.response });
