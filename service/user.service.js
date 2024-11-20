@@ -80,7 +80,6 @@ export default class UserService {
       if (!validToken) {
         return res.status(403).json({ message: "Invalid Token" });
       }
-      console.log(validToken);
       let timeInMIlliseconds = new Date(validToken.expiring_at).getTime();
       if (timeInMIlliseconds > Date.now()) {
         return res.status(409).json({

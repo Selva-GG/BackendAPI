@@ -1,0 +1,182 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Admin API",
+    "description": "This is docs for the Admin management",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Admin",
+      "description": "Admin documentation"
+    }
+  ],
+  "paths": {
+    "/admin/addRoute": {
+      "post": {
+        "summary": "Creating new route",
+        "description": "Create a new route with start place and destination ",
+        "tags": ["Admin"],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AddRouteRequest"
+        },
+        "responses": {
+          "201": {
+            "description": "Route created successfully"
+          }
+        }
+      }
+    },
+    "/admin/createBus": {
+      "post": {
+        "summary": "Creating new bus",
+        "description": "Create a bus and seats are added to seat table based on seat capacity",
+        "tags": ["Admin"],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateBusRequest"
+        },
+        "responses": {
+          "201": {
+            "description": "Bus created successfully"
+          }
+        }
+      }
+    },
+    "/admin/assign": {
+      "post": {
+        "summary": "Assign bus",
+        "description": "Assigning a bus to the specified route",
+        "tags": ["Admin"],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AssignRequest"
+        },
+        "responses": {
+          "201": {
+            "description": "Bus is assigned to route successfully"
+          }
+        }
+      }
+    },
+    "/admin/show-buses": {
+      "post": {
+        "summary": "Show all bus",
+        "description": "All the buses in db is displayed",
+        "tags": ["Admin"],
+        "responses": {
+          "201": {
+            "description": "All buses are displayed successfully "
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "requestBodies": {
+      "AssignRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AssignSchema"
+            },
+            "example": {
+              "bus_id": 7,
+              "route_id": 2,
+              "date": "2024-11-20"
+            }
+          }
+        }
+      },
+      "CreateBusRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreateBusSchema"
+            },
+            "example": {
+              "bus_name": "Thar",
+              "capacity": 4,
+              "type": "AC"
+            }
+          }
+        }
+      },
+      "AddRouteRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddRouteSchema"
+            },
+            "example": {
+              "start_place": "Bangalore",
+              "destn_place": "Chennai"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "AssignSchema": {
+        "type": "object",
+        "properties": {
+          "bus_id": {
+            "type": "integer"
+          },
+          "route_id": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          }
+        },
+        "required": ["bus_id", "route_id", "date"]
+      },
+      "CreateBusSchema": {
+        "type": "object",
+        "properties": {
+          "bus_name": {
+            "type": "string"
+          },
+          "capacity": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": ["bus_name", "capacity", "type"]
+      },
+      "AddRouteSchema": {
+        "type": "object",
+        "properties": {
+          "start_place": {
+            "type": "string"
+          },
+          "destn_place": {
+            "type": "string"
+          }
+        },
+        "required": ["start_place", "destn_place"]
+      }
+    }
+  },
+
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}
