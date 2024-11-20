@@ -6,7 +6,7 @@ export default class BaseRepository {
     let columns = Object.keys(options);
     let values = Object.values(options);
     let conditions = columns
-      .map((col, index) => `${tableName}.${col} = $${index + 1}`)
+      .map((col, index) => `${col} = $${index + 1}`)
       .join(" AND ");
 
     let query = `

@@ -5,7 +5,7 @@ export default class AuthRepository {
   static async generateAccessToken(user_id) {
     let query = `
     INSERT INTO auth_token (user_id, access_token, refresh_token , expiring_at)
-    VALUES ($1, gen_random_uuid(), gen_random_uuid(), NOW() + INTERVAL '1 minute')
+    VALUES ($1, gen_random_uuid(), gen_random_uuid(), NOW() + INTERVAL '5 minute')
     returning *;
     `;
     try {
@@ -22,7 +22,8 @@ export default class AuthRepository {
     SELECT 1 from auth_token where ${tokenKey} = $1
     `;
     try {
-      return db.oneOrNone(query, [tokenValue]);
+      console.log();
+      return await db.oneOrNone(query, [tokenValue]);
     } catch (err) {
       throw new ErrorResponse(
         "Db failed in checking the token " + err.message,
@@ -32,12 +33,12 @@ export default class AuthRepository {
   }
   static async updateAccessToken(refresh_token) {
     let query = `
-    UPDATE auth_token 
+    UPDATE auth_token
     SET 
     access_token = gen_random_uuid(),
     expiring_at = NOW() + INTERVAL '1 minute'
     WHERE 
-    refresh_token = $2``
+    refresh_token = $1
     returning *;
     `;
     try {

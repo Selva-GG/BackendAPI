@@ -4,8 +4,8 @@ import ErrorResponse from "../model/error.model.js";
 import BaseRepository from "./base.repository.js";
 
 export default class UserRepository extends BaseRepository {
-  static async findUser(options) {
-    return await this.unique("users", options);
+  static async findUser(tableName, options) {
+    return await this.unique(tableName, options);
   }
 
   static async deleteUserSession(access_token) {
@@ -20,7 +20,7 @@ export default class UserRepository extends BaseRepository {
   static async deleteUser(user_id) {
     let query = `Delete from users where user_id  = $1`;
     try {
-      await db.oneOrNone(query, [user_id]);
+      await db.query(query, [user_id]);
     } catch (err) {
       return "DBError" + err.message;
     }

@@ -5,6 +5,7 @@ import swaggerValidation from "openapi-validator-middleware";
 import swagger from "./user.swagger.json" assert { type: "json" };
 const router = express.Router();
 
+swaggerValidation.init(swagger);
 const userValidation = swaggerValidation.getNewMiddleware(swagger);
 
 router.post(
@@ -43,6 +44,10 @@ router.post("/delete", requestAuth, userService.removeUser, (req, res) => {
     .json({ message: "Successful deleted user " + req.user });
 });
 
-router.post("/refresh");
+router.patch("/refresh", userService.refreshToken, (req, res) => {
+  return res
+    .status(201)
+    .json({ message: "New Access token generated", data: req.new_token });
+});
 
 export default router;

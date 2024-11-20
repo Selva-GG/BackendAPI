@@ -1,11 +1,20 @@
+import ErrorResponse from "../model/error.model.js";
 import BookingRepository from "../repository/booking.repository.js";
 import BusRepository from "../repository/bus.repository.js";
 import RouteRepository from "../repository/route.repository.js";
+import UserRepository from "../repository/user.repository.js";
 
 export default class BookingService {
   static userBookings = async (req, res, next) => {
     let user_id = req.params.id;
     try {
+      let userExists = await UserRepository.findUser("users", { user_id });
+      if (!userExists) {
+        throw new ErrorResponse(
+          `No user available with the userid --> ${user_id}`,
+          466
+        );
+      }
       let bookings = await BookingRepository.getUserBookings(user_id);
       if (!bookings) {
         res
@@ -38,6 +47,13 @@ export default class BookingService {
   static book = async (req, res, next) => {
     let { user_id, seat_id, bus_id, date } = req.body;
     try {
+      let userExists = await UserRepository.findUser("users", { user_id });
+      if (!userExists) {
+        throw new ErrorResponse(
+          `No user available with the userid --> ${user_id}`,
+          466
+        );
+      }
       let seatExists = await BusRepository.findSeats({
         seat_id,
         bus_id,
