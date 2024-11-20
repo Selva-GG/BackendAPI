@@ -14,7 +14,7 @@ export const registerConstraints = {
 
 export function request_validator(authConstraints) {
   return (req, res, next) => {
-    let error = Validator.validate(loginConstraints, req.body);
+    let error = Validator.validate(authConstraints, req.body);
     if (error) {
       return next(new ErrorResponse(error, 401));
     }
