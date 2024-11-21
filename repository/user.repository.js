@@ -26,9 +26,13 @@ export default class UserRepository extends BaseRepository {
     }
   }
 
-  static async insert(data) {
+  static async insert(data, role) {
     const { username, password, ...userDetails } = data;
-    const userJsonData = JSON.stringify({ username, password });
+    const userJsonData = JSON.stringify({
+      username,
+      password,
+      role: role ? role : "USERS",
+    });
     const userDetailsJsonData = JSON.stringify(userDetails);
 
     const query =
@@ -41,8 +45,8 @@ export default class UserRepository extends BaseRepository {
     SELECT * FROM json_populate_record(NULL::user_details, $2::json)
   ),
   insert_user_data AS (
-    INSERT INTO users (username, password)
-    SELECT username, password FROM user_data
+    INSERT INTO users (username, password , role)
+    SELECT username, password , role FROM user_data
     RETURNING user_id
   )
     INSERT INTO user_details (user_id, firstname, lastname, mobile, address)

@@ -1,7 +1,26 @@
 import BusRepository from "../repository/bus.repository.js";
 import RouteRepository from "../repository/route.repository.js";
+import UserRepository from "../repository/user.repository.js";
 
 export default class CheckService {
+  static isAdmin = async (req, res, next) => {
+    try {
+      let user = await UserRepository.findUser("users", {
+        user_id: req.user_id,
+      });
+      if (!user) {
+        return res
+          .status(403)
+          .json({ message: "No user Found with this id " + req.user_id });
+      }
+      if (user.role != "ADMIN") {
+        return res.status(403).json({ message: "Only Admin access" });
+      }
+      next();
+    } catch (err) {
+      return next(err);
+    }
+  };
   static validBus = async (req, res, next) => {
     let { bus_id } = req.body;
     try {

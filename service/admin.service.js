@@ -2,8 +2,17 @@ import ErrorResponse from "../model/error.model.js";
 import AdminRepository from "../repository/admin.repository.js";
 import BusRepository from "../repository/bus.repository.js";
 import RouteRepository from "../repository/route.repository.js";
+import UserRepository from "../repository/user.repository.js";
 
 export default class RoutesService {
+  static createAdmin = async (req, res, next) => {
+    try {
+      req.user = await UserRepository.addAdmin(req.body, "ADMIN");
+      next();
+    } catch (err) {
+      return next(err);
+    }
+  };
   static showAllBuses = async (req, res, next) => {
     try {
       let buses = await AdminRepository.showBuses();

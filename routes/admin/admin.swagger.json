@@ -63,7 +63,7 @@
       }
     },
     "/admin/show-buses": {
-      "post": {
+      "get": {
         "summary": "Show all bus",
         "description": "All the buses in db is displayed",
         "tags": ["Admin"],
