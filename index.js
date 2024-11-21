@@ -1,3 +1,5 @@
+import "suppress-experimental-warnings";
+
 import { errorHandler } from "./middleware/errorLogger.js";
 const port = 3000;
 

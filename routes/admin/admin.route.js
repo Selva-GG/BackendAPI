@@ -1,11 +1,10 @@
 import express from "express";
 import AdminService from "../../service/admin.service.js";
-import request_auth from "../../middleware/request_auth.js";
 import CheckService from "../../service/check.service.js";
 
 const router = express.Router();
 
-router.use(request_auth, CheckService.isAdmin);
+router.use(CheckService.isAdmin);
 
 router.post("/addAdmin", AdminService.createAdmin);
 

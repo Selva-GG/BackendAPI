@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://192.168.1.13:3000"
+      "url": "http://localhost:3000"
     }
   ],
   "tags": [
@@ -17,7 +17,7 @@
     }
   ],
   "paths": {
-    "/login": {
+    "/users/login": {
       "post": {
         "summary": "Login user",
         "description": "Authenticates a user",
@@ -42,7 +42,7 @@
         }
       }
     },
-    "/register": {
+    "/users/register": {
       "post": {
         "summary": "Register user",
         "description": "Creates a new user",
@@ -67,7 +67,7 @@
         }
       }
     },
-    "/logout": {
+    "/users/logout": {
       "post": {
         "tags": ["Users"],
         "summary": "Logout the user session",
@@ -83,7 +83,7 @@
         }
       }
     },
-    "/delete": {
+    "/users/delete": {
       "post": {
         "tags": ["Users"],
         "summary": "Logout the user session",
@@ -117,7 +117,7 @@
         }
       }
     },
-    "/refresh": {
+    "/users/refresh": {
       "patch": {
         "tags": ["Users"],
         "summary": "Creates new access token after expiration",

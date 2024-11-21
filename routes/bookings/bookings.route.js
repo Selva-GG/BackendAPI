@@ -1,15 +1,8 @@
 import express from "express";
 import BookingService from "../../service/booking.service.js";
-import swaggerValidation from "openapi-validator-middleware";
-import swagger from "./booking.swagger.json" assert { type: "json" };
-import request_auth from "../../middleware/request_auth.js";
 import CheckService from "../../service/check.service.js";
 
 const router = express.Router();
-
-const bookingValidation = swaggerValidation.getNewMiddleware(swagger);
-
-router.use(request_auth);
 
 router.get("/:id", BookingService.userBookings, (req, res) => {
   res.status(201).json({ message: "User Bookings", data: req.bookings });

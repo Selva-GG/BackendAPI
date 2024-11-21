@@ -4,92 +4,81 @@ import request_auth from "../middleware/request_auth.js";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
 import fs from "fs";
+import swaggerValidation from "openapi-validator-middleware";
+import api from "suppress-experimental-warnings";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const options = {
+  explorer: true,
+  swaggerOptions: {
+    urls: [],
+  },
+};
 
-async function initializeRoutes(server) {
-  const options = {
-    explorer: true,
-    swaggerOptions: {
-      urls: [],
-    },
-  };
-  console.log("\n\x1b[33mInstalling routes:");
+async function initializeSwagger(swaggerPath, baseRoute, server) {
+  console.log(`\x1b[36mAdding Swagger doc for: /${baseRoute}\x1b[0m`);
+  const { default: currentSwaggerDoc } = await import(
+    pathToFileURL(swaggerPath),
+    {
+      assert: { type: "json" },
+    }
+  );
+  const routePath = `/${baseRoute}-swagger`;
+  server.get(routePath, (req, res) => res.json(currentSwaggerDoc));
+  options.swaggerOptions.urls.push({
+    url: routePath,
+    name: currentSwaggerDoc.info.title,
+  });
+
+  swaggerValidation.init(currentSwaggerDoc);
+  const userValidation = swaggerValidation.getNewMiddleware(currentSwaggerDoc);
+  return userValidation;
+}
+
+async function initializeRoutes(userValidation, baseRoute, filePath, server) {
+  console.log(`\x1b[32mAssigning routes for: /${baseRoute}\x1b[0m`);
+  const { default: apiRoutes } = await import(pathToFileURL(filePath));
+
+  // Apply middleware for all non-authentication endpoints
+  apiRoutes.stack.forEach((route) => {
+    if (route.route) {
+      const apiPath = route.route.path;
+      if (!["/login", "/register", "/refresh", "/addAdmin"].includes(apiPath)) {
+        server.use(`/${baseRoute}${apiPath}`, request_auth);
+      }
+      server.all(`/${baseRoute}${apiPath}`, userValidation.validate);
+    }
+  });
+  server.use(`/${baseRoute}`, apiRoutes);
+}
+
+async function initializeMiddleware(server) {
+  console.log("\n\x1b[33mInstalling routes:\x1b[0m");
 
   try {
-    let routesDir = findRoutesDir();
-    let routes = await recursive(routesDir);
+    const routes = await recursive("./routes", ["*.swagger.json"]);
 
     for (const filePath of routes) {
-      const splitPath = filePath.split(path.sep).pop();
-      const baseRoute = splitPath.split(".")[0];
-
-      //Assigning routes
-      if (splitPath.includes("route")) {
-        console.log(`Assigning routes for  ${baseRoute}`);
-        const { default: apiRoutes } = await import(pathToFileURL(filePath));
-        server.use(`/${baseRoute}`, apiRoutes);
-
-        apiRoutes.stack.forEach((route) => {
-          if (route.route) {
-            const apiPath = route.route.path;
-            if (
-              !["/login", "/register", "/refresh", "/addAdmin"].includes(
-                apiPath
-              )
-            ) {
-              //Using authentication middleware
-              server.use(`/${baseRoute}${apiPath}`, request_auth);
-            }
-          }
-        });
-      }
-
-      //Creating a swagger api-docs
-      if (splitPath.includes("swagger")) {
-        console.log(`Pushing swagger doc of ${baseRoute}`);
-        const { default: currentSwaggerDoc } = await import(
-          pathToFileURL(filePath),
-          {
-            assert: { type: "json" },
-          }
-        );
-        let swaggerPath = `/${baseRoute}-swagger`;
-        server.get(swaggerPath, (req, res) => res.send(currentSwaggerDoc));
-        options.swaggerOptions.urls.push({
-          url: swaggerPath,
-          name: currentSwaggerDoc.info.title,
-        });
-      }
+      const parentDirectory = path.dirname(filePath);
+      const swaggerPath = await recursive(parentDirectory, ["*.js"]);
+      const fileName = path.basename(filePath);
+      const baseRoute = fileName.split(".").slice(0, 1);
+      const userValidation = await initializeSwagger(
+        swaggerPath[0],
+        baseRoute,
+        server
+      );
+      await initializeRoutes(userValidation, baseRoute, filePath, server);
+      // Setup Swagger UI
+      server.use("/api-docs", swaggerUi.serve, swaggerUi.setup(null, options));
+      console.log(
+        "\x1b[32mSwagger documentation available at: http://192.168.1.13:3000/api-docs\x1b[m"
+      );
     }
-    server.use("/api-docs", swaggerUi.serve, swaggerUi.setup(null, options));
   } catch (err) {
-    console.error("Error initializing routes:", err);
+    console.error("\x1b[31mError initializing routes:\x1b[0m", err);
   }
 }
 
-function findRoutesDir() {
-  let currentDir = __dirname;
-
-  while (currentDir) {
-    const potentialRoutesDir = path.join(currentDir, "routes");
-    if (
-      fs.existsSync(potentialRoutesDir) &&
-      fs.statSync(potentialRoutesDir).isDirectory()
-    ) {
-      return potentialRoutesDir;
-    }
-
-    // Move one directory up
-    const parentDir = path.dirname(currentDir);
-    if (parentDir === currentDir) {
-      break; // Reached the root directory
-    }
-    currentDir = parentDir;
-  }
-
-  throw new Error("Routes directory not found!");
-}
-
-export default initializeRoutes;
+export default initializeMiddleware;
