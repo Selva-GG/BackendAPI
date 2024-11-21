@@ -1,19 +1,15 @@
 import { errorHandler } from "./middleware/errorLogger.js";
-import app from "./app.js";
-import userRouter from "./routes/users/user.js";
-import bookingRouter from "./routes/booking/booking.js";
-import docsRouter from "./routes/api-docs/api.js";
-import adminRouter from "./routes/admin/admin.route.js";
+const port = 3000;
+
 import express from "express";
-import cors from "cors";
+const server = express();
+import initializeRoutes from "./util/initializeRoutes.js";
 
-app.use(cors());
-app.use(express.json());
+server.use(express.json());
 
-app.use("/", userRouter);
-app.use("/api-docs", docsRouter);
-app.use("/bookings", bookingRouter);
-app.use("/admin", adminRouter);
+await initializeRoutes(server);
+server.use(errorHandler);
 
-
-app.use(errorHandler);
+server.listen(port, (req, res) => {
+  console.log("Server running on port " + port);
+});
