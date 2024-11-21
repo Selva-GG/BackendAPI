@@ -21,15 +21,15 @@ var options = {
   swaggerOptions: {
     urls: [
       {
-        url: "http://localhost:3000/api-docs/user",
+        url: "http://192.168.1.13:3000/api-docs/user",
         name: "Users",
       },
       {
-        url: "http://localhost:3000/api-docs/booking",
+        url: "http://192.168.1.13:3000/api-docs/booking",
         name: "Booking",
       },
       {
-        url: "http://localhost:3000/api-docs/admin",
+        url: "http://192.168.1.13:3000/api-docs/admin",
         name: "Admin",
       },
     ],
