@@ -14,8 +14,9 @@ class AdminController {
     this.router.get("/show-buses", tryCatchWrapper(this.#showBuses));
   }
 
-  #adminMiddleware = async (req, res) => {
+  #adminMiddleware = async (req, res, next) => {
     await Validator.isAdmin(req.user_id);
+    next();
   };
   #addAdmin = async (req, res) => {
     let user = await adminService.createAdmin(req.body);

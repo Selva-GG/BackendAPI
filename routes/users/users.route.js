@@ -37,7 +37,7 @@ class UserController {
     return res.status(200).json({ message: "Successful deleted user " });
   };
   #refresh = async (req, res, next) => {
-    let response = await userService.refreshToken(req.body);
+    let response = await userService.refreshToken(req.body.refresh_token);
     return res.status(200).json({
       message: "New Access token generated",
       response,

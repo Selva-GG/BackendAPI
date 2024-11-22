@@ -53,7 +53,6 @@ async function initializeRoutes(
 
 async function initializeMiddleware(server) {
   console.log("\n\x1b[33mInstalling routes:\x1b[0m");
-  console.log(await fs.ensureDir("sql"));
 
   try {
     const routes = await recursive("./routes", ["*.swagger.json"]);

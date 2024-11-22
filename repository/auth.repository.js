@@ -42,7 +42,7 @@ RETURNING *, TO_CHAR(expiring_at, 'dd-mm-yyyy hh24:mi:ss') AS expiring_at ;
       return { access_token, expiring_at };
     } catch (err) {
       throw new ErrorResponse(
-        "DB Error in in updating existing token" + err.message,
+        "DB Error in in updating existing token " + err.message,
         409
       );
     }
