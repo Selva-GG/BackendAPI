@@ -38,9 +38,12 @@ export default class UserService {
     const { username, password } = req.body;
 
     try {
-      const user = await userRepository.findUser({ username });
-      if (!user || !(await bcrypt.compare(password, user.password))) {
-        return next(new ErrorResponse("Invalid username or password", 403));
+      const user = await userRepository.findUser(
+        { username },
+        "Invalid username"
+      );
+      if (!(await bcrypt.compare(password, user.password))) {
+        return next(new ErrorResponse("Invalid  password", 403));
       }
 
       req.user = {

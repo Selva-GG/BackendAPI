@@ -1,4 +1,3 @@
-import ErrorResponse from "../model/error.model.js";
 import AdminRepository from "../repository/admin.repository.js";
 import BusRepository from "../repository/bus.repository.js";
 import RouteRepository from "../repository/route.repository.js";
