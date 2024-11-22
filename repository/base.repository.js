@@ -3,7 +3,7 @@ import db from "../db/db.js";
 import ErrorResponse from "../model/error.model.js";
 
 export default class BaseRepository {
-  static async unique(tableName, options, err, onExisting) {
+  static async unique(tableName, options, err, checkDuplicate) {
     let columns = Object.keys(options);
     let values = Object.values(options);
     let conditions = columns
@@ -15,9 +15,9 @@ export default class BaseRepository {
 
     try {
       let response = await db.oneOrNone(query, values);
-      if (!response && !onExisting) {
+      if (!response && !checkDuplicate) {
         throw new ErrorResponse(err || "No records found", 403);
-      } else if (onExisting) {
+      } else if (checkDuplicate) {
         throw new ErrorResponse(err || "Record is present", 409);
       }
       return response;

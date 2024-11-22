@@ -4,8 +4,8 @@ import ErrorResponse from "../model/error.model.js";
 import BaseRepository from "./base.repository.js";
 
 export default class UserRepository extends BaseRepository {
-  static async findUser(options, err, onExisting) {
-    return await this.unique("users", options, err, onExisting);
+  static async findUser(options, err, checkDuplicate) {
+    return await this.unique("users", options, err, checkDuplicate);
   }
 
   static async deleteUserSession(access_token) {

@@ -9,13 +9,7 @@ export default class UserService {
     const { username, password, ...body } = req.body;
 
     try {
-      await userRepository.findUser(
-        {
-          username,
-        },
-        "User Already Exists",
-        true
-      );
+      await userRepository.findUser({username}, "User Already Exists", true);
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await userRepository.insert({
