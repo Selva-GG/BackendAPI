@@ -50,7 +50,17 @@ export default class UserService {
     let validToken = await AuthRepository.checkValidToken({ refresh_token });
     let timeInMIlliseconds = new Date(validToken.expiring_at).getTime();
     if (timeInMIlliseconds > Date.now()) {
-      throw new ErrorResponse("Existing Token is not expired ", 466);
+      let response = {
+        message: "Existing Token is not expired",
+        token: {
+          access_token: validToken.access_token,
+          expiring_at: dateFormat(
+            "dd-mm-yyyy hh:mm:ss",
+            validToken.expiring_at
+          ),
+        },
+      };
+      throw new ErrorResponse(response, 409);
     }
 
     return await AuthRepository.updateAccessToken(refresh_token);

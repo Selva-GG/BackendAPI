@@ -1,14 +1,6 @@
-class APIError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "APIError";
-  }
-}
-
-export default class ErrorResponse extends APIError {
+export default class ErrorResponse {
   constructor(message, statusCode) {
-    super(message);
+    this.message = message;
     this.statusCode = statusCode;
   }
 }
-
