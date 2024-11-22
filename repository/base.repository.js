@@ -1,3 +1,4 @@
+import e from "express";
 import db from "../db/db.js";
 import ErrorResponse from "../model/error.model.js";
 
@@ -15,12 +16,15 @@ export default class BaseRepository {
     try {
       let response = await db.oneOrNone(query, values);
       if (!response && !onExisting) {
-        throw new ErrorResponse(err ? err : "No records found", 403);
+        throw new ErrorResponse(err || "No records found", 403);
       } else if (onExisting) {
-        throw new ErrorResponse(err ? err : "Record is present", 409);
+        throw new ErrorResponse(err || "Record is present", 409);
       }
       return response;
     } catch (err) {
+      if(err instanceof ErrorResponse){
+        throw err
+      }
       throw new ErrorResponse(
         `DB failed in searching the record in ${tableName} ${err.message}`,
         409

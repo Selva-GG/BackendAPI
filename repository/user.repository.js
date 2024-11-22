@@ -37,7 +37,7 @@ export default class UserRepository extends BaseRepository {
     const userJsonData = JSON.stringify({
       username,
       password,
-      role: role ? role : "USERS",
+      role: role || "USERS",
     });
     const userDetailsJsonData = JSON.stringify(userDetails);
 
