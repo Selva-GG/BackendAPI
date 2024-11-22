@@ -25,7 +25,7 @@ export default class BusRepository extends BaseRepository {
     try {
       return await db.manyOrNone(query, [bus_id, date]);
     } catch (err) {
-      throw new ErrorResponse("DB Search bus error " + err.message, 500);
+      throw new ErrorResponse("DB Search bus error " + err.message, 409);
     }
   }
 
@@ -51,7 +51,7 @@ WHERE
     } catch (err) {
       throw new ErrorResponse(
         "DB basic Seat details fetch error " + err.message,
-        500
+        409
       );
     }
   }

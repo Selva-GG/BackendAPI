@@ -9,12 +9,14 @@ export default class UserService {
     const { username, password, ...body } = req.body;
 
     try {
-      let userExists = await userRepository.findUser("users", {
-        username,
-      });
-      if (userExists) {
-        next(new ErrorResponse("User Already Exists", 409));
-      }
+      await userRepository.findUser(
+        {
+          username,
+        },
+        "User Already Exists",
+        true
+      );
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await userRepository.insert({
         username,
@@ -36,7 +38,7 @@ export default class UserService {
     const { username, password } = req.body;
 
     try {
-      const user = await userRepository.findUser("users ", { username });
+      const user = await userRepository.findUser({ username });
       if (!user || !(await bcrypt.compare(password, user.password))) {
         return next(new ErrorResponse("Invalid username or password", 403));
       }
@@ -77,9 +79,6 @@ export default class UserService {
   static refreshToken = async (req, res, next) => {
     try {
       let validToken = await AuthRepository.checkValidToken(req.body);
-      if (!validToken) {
-        return res.status(403).json({ message: "Invalid Token" });
-      }
       let timeInMIlliseconds = new Date(validToken.expiring_at).getTime();
       if (timeInMIlliseconds > Date.now()) {
         return res.status(409).json({

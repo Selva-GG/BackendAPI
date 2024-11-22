@@ -8,13 +8,8 @@ export default class BookingService {
   static userBookings = async (req, res, next) => {
     let user_id = req.params.id;
     try {
-      let userExists = await UserRepository.findUser("users", { user_id });
-      if (!userExists) {
-        throw new ErrorResponse(
-          `No user available with the userid --> ${user_id}`,
-          466
-        );
-      }
+       await UserRepository.findUser({ user_id });
+  
       let bookings = await BookingRepository.getUserBookings(user_id);
       if (!bookings) {
         res
@@ -31,12 +26,7 @@ export default class BookingService {
   static cancelBooking = async (req, res, next) => {
     let { schedule_id } = req.body;
     try {
-      let seatExists = await BusRepository.findSeats({ schedule_id });
-      if (!seatExists) {
-        return res.status(403).json({
-          message: `No such seat exists with schedule_id : ${schedule_id}`,
-        });
-      }
+      await BusRepository.findSeats({ schedule_id });
       req.seat = await BookingRepository.cancelBooking(schedule_id);
       next();
     } catch (err) {
@@ -47,23 +37,12 @@ export default class BookingService {
   static book = async (req, res, next) => {
     let { user_id, seat_id, bus_id, date } = req.body;
     try {
-      let userExists = await UserRepository.findUser("users", { user_id });
-      if (!userExists) {
-        throw new ErrorResponse(
-          `No user available with the userid --> ${user_id}`,
-          466
-        );
-      }
-      let seatExists = await BusRepository.findSeats({
+      await UserRepository.findUser({ user_id });
+      await BusRepository.findSeats({
         seat_id,
         bus_id,
         travel_date: date,
       });
-      if (seatExists) {
-        return res
-          .status(405)
-          .json({ message: "Seat is already booked for specific date" });
-      }
       req.response = await BookingRepository.Book(
         user_id,
         bus_id,

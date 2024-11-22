@@ -11,7 +11,7 @@ export default class AdminRepository {
     try {
       return await db.oneOrNone(query, [routeData]);
     } catch (err) {
-      throw new ErrorResponse("DB failed in assign route " + err.message, 466);
+      throw new ErrorResponse("DB failed in assign route " + err.message, 409);
     }
   }
   static async insertBus(bus_name, capacity, type) {
@@ -38,7 +38,7 @@ SELECT bus_id, bus_name, capacity
     try {
       return await db.oneOrNone(query, [bus_name, capacity, type]);
     } catch (err) {
-      throw new ErrorResponse("Insertion of bus error " + err.message, 500);
+      throw new ErrorResponse("DB Insertion of bus failed " + err.message, 500);
     }
   }
   static async addRoute(start_place, destn_place) {
@@ -50,7 +50,7 @@ SELECT bus_id, bus_name, capacity
     try {
       return await db.oneOrNone(query, [start_place, destn_place]);
     } catch (err) {
-      throw new ErrorResponse("DB add route failed " + err.message, 466);
+      throw new ErrorResponse("DB add route failed " + err.message, 409);
     }
   }
   static async showBuses() {
@@ -59,7 +59,7 @@ SELECT bus_id, bus_name, capacity
     try {
       return await db.manyOrNone(query);
     } catch (err) {
-      throw new ErrorResponse("DB Fetch Bus Failed" + err.message, 466);
+      throw new ErrorResponse("DB Fetch Bus Failed" + err.message, 409);
     }
   }
 }

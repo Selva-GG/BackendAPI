@@ -2,7 +2,7 @@ import db from "../db/db.js";
 import ErrorResponse from "../model/error.model.js";
 
 export default class BaseRepository {
-  static async unique(tableName, options) {
+  static async unique(tableName, options, err, onExisting) {
     let columns = Object.keys(options);
     let values = Object.values(options);
     let conditions = columns
@@ -13,11 +13,17 @@ export default class BaseRepository {
     SELECT * from ${tableName} where ${conditions}`;
 
     try {
-      return await db.oneOrNone(query, values);
+      let response = await db.oneOrNone(query, values);
+      if (!response && !onExisting) {
+        throw new ErrorResponse(err ? err : "No records found", 403);
+      } else if (onExisting) {
+        throw new ErrorResponse(err ? err : "Record is present", 409);
+      }
+      return response;
     } catch (err) {
       throw new ErrorResponse(
-        `Db failed in searching the record in ${tableName} ${err.message}`,
-        466
+        `DB failed in searching the record in ${tableName} ${err.message}`,
+        409
       );
     }
   }

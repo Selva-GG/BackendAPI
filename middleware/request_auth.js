@@ -11,12 +11,10 @@ const request_auth = async (req, res, next) => {
     let token = req_token.startsWith("Bearer ")
       ? req_token.slice(7)
       : req_token;
-    let result = await UserRepository.findUser("auth_token", {
+    let result = await AuthRepository.checkValidToken({
       access_token: token,
     });
-    if (!result) {
-      throw new ErrorResponse("Invalid Token", 404);
-    }
+
     let timeInMIlliseconds = new Date(result.expiring_at).getTime();
     if (timeInMIlliseconds < Date.now()) {
       throw new ErrorResponse("Token Expired", 401);

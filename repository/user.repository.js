@@ -4,8 +4,8 @@ import ErrorResponse from "../model/error.model.js";
 import BaseRepository from "./base.repository.js";
 
 export default class UserRepository extends BaseRepository {
-  static async findUser(tableName, options) {
-    return await this.unique(tableName, options);
+  static async findUser(options, err, onExisting) {
+    return await this.unique("users", options, err, onExisting);
   }
 
   static async deleteUserSession(access_token) {
@@ -13,7 +13,10 @@ export default class UserRepository extends BaseRepository {
     try {
       await db.oneOrNone(query, [access_token]);
     } catch (err) {
-      return "DBError" + err.message;
+      throw new ErrorResponse(
+        "DB error in deleting the user session " + err.message,
+        409
+      );
     }
   }
 
@@ -22,7 +25,10 @@ export default class UserRepository extends BaseRepository {
     try {
       await db.query(query, [user_id]);
     } catch (err) {
-      return "DBError" + err.message;
+      throw new ErrorResponse(
+        "DB error in deleting the user " + err.message,
+        409
+      );
     }
   }
 
@@ -58,7 +64,10 @@ export default class UserRepository extends BaseRepository {
     try {
       return await db.one(query, [userJsonData, userDetailsJsonData]);
     } catch (err) {
-      throw new Error(`Database insertion failed: ${err.message}`);
+      throw new ErrorResponse(
+        "DB error in inserting new user " + err.message,
+        409
+      );
     }
   }
 }

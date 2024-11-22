@@ -15,14 +15,14 @@ RETURNING *, TO_CHAR(expiring_at, 'dd-mm-yyyy hh24:mi:ss') AS expiring_at;
       return { access_token, expiring_at };
     } catch (err) {
       throw new ErrorResponse(
-        "Error in in generating new token" + err.message,
-        466
+        "DB Error in in generating new token" + err.message,
+        409
       );
     }
   }
 
   static async checkValidToken(token) {
-    return this.unique("auth_token", token);
+    return this.unique("auth_token", token, "Invalid Token");
   }
   static async updateAccessToken(refresh_token) {
     let query = `
@@ -42,8 +42,8 @@ RETURNING *, TO_CHAR(expiring_at, 'dd-mm-yyyy hh24:mi:ss') AS expiring_at ;
       return { access_token, expiring_at };
     } catch (err) {
       throw new ErrorResponse(
-        "Error in in updating existing token" + err.message,
-        466
+        "DB Error in in updating existing token" + err.message,
+        409
       );
     }
   }

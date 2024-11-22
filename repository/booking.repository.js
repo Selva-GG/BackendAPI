@@ -20,8 +20,8 @@ export default class BookingRepository {
       return await db.manyOrNone(query, [user_id]);
     } catch (err) {
       throw new ErrorResponse(
-        `Db error on user's booking fetch ${err.message}`,
-        466
+        `DB error on user's booking fetch ${err.message}`,
+        409
       );
     }
   }
@@ -50,7 +50,7 @@ RETURNING * , 'Cancelled' as status;
     try {
       return await db.oneOrNone(query, [schedule_id]);
     } catch (err) {
-      throw new ErrorResponse(`Db cancel seat failed ${err.message} `, 466);
+      throw new ErrorResponse(`DB cancel seat failed ${err.message} `, 409);
     }
   }
 
@@ -63,7 +63,7 @@ RETURNING * , 'Cancelled' as status;
     try {
       return await db.oneOrNone(query, [bus_id, seat_id, date, user_id]);
     } catch (err) {
-      throw new ErrorResponse(` Db Booking seat failed ${err.message}`, 466);
+      throw new ErrorResponse(` DB Booking seat failed ${err.message}`, 409);
     }
   }
 }

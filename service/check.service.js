@@ -5,14 +5,9 @@ import UserRepository from "../repository/user.repository.js";
 export default class CheckService {
   static isAdmin = async (req, res, next) => {
     try {
-      let user = await UserRepository.findUser("users", {
+      let user = await UserRepository.findUser({
         user_id: req.user_id,
       });
-      if (!user) {
-        return res
-          .status(403)
-          .json({ message: "No user Found with this id " + req.user_id });
-      }
       if (user.role != "ADMIN") {
         return res.status(403).json({ message: "Only Admin access" });
       }
@@ -24,12 +19,7 @@ export default class CheckService {
   static validBus = async (req, res, next) => {
     let { bus_id } = req.body;
     try {
-      let busFound = await BusRepository.findBus({ bus_id });
-      if (!busFound) {
-        return res.status(209).json({
-          message: `No bus is with the id -> ${bus_id}`,
-        });
-      }
+      await BusRepository.findBus({ bus_id });
       next();
     } catch (err) {
       return next(err);
@@ -62,15 +52,12 @@ export default class CheckService {
   static validSeat = async (req, res, next) => {
     let { seat_id } = req.body;
     try {
-      let seatExists = await BusRepository.seatExists({ seat_id });
-      if (!seatExists) {
-        return res
-          .status(409)
-          .json({ message: `No seat exists with this seat id ${seat_id}` });
-      }
+      await BusRepository.seatExists({ seat_id });
       next();
     } catch (err) {
       return next(err);
     }
   };
+
+ 
 }

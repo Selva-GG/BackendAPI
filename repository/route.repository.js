@@ -20,8 +20,8 @@ export default class RouteRepository extends BaseRepository {
       return await db.manyOrNone(query, [...values, date]);
     } catch (err) {
       throw new ErrorResponse(
-        " DB failed in searching the bus_id " + err.message,
-        466
+        "DB failed in searching the bus_id " + err.message,
+        409
       );
     }
   }
@@ -42,11 +42,11 @@ export default class RouteRepository extends BaseRepository {
     } catch (err) {
       throw new ErrorResponse(
         "DB failed in checking conflicts for route assignment " + err.message,
-        466
+        409
       );
     }
   }
-  static async findRoute(options) {
-    return await this.unique("routes", options);
+  static async findRoute(options, err, onExisting) {
+    return await this.unique("routes", options, err, onExisting);
   }
 }

@@ -28,12 +28,8 @@ export default class RoutesService {
   static addRoute = async (req, res, next) => {
     let { start_place, destn_place } = req.body;
     try {
-      let routeExists = await RouteRepository.findRoute(req.body);
-      if (routeExists) {
-        return res
-          .status(202)
-          .json({ message: "Route already exists", data: routeExists });
-      }
+      await RouteRepository.findRoute(req.body, "Route already exists", true);
+
       let new_route = await AdminRepository.addRoute(start_place, destn_place);
       req.new_route = new_route;
       next();
@@ -64,9 +60,7 @@ export default class RoutesService {
   static insertBus = async (req, res, next) => {
     let { bus_name, capacity, type } = req.body;
     try {
-      if (await BusRepository.findBus({ bus_name })) {
-        throw new ErrorResponse("Bus name not available", 403);
-      }
+      await BusRepository.findBus({ bus_name });
       req.bus = await AdminRepository.insertBus(bus_name, capacity, type);
       next();
     } catch (err) {
