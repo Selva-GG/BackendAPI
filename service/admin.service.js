@@ -1,69 +1,64 @@
+import ErrorResponse from "../model/error.model.js";
 import AdminRepository from "../repository/admin.repository.js";
 import BusRepository from "../repository/bus.repository.js";
 import RouteRepository from "../repository/route.repository.js";
 import UserRepository from "../repository/user.repository.js";
 
-export default class RoutesService {
-  static createAdmin = async (req, res, next) => {
+export default class AdminService {
+  static async createAdmin(data) {
     try {
-      req.user = await UserRepository.addAdmin(req.body, "ADMIN");
-      next();
+      return await UserRepository.addAdmin(data, "ADMIN");
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
-  static showAllBuses = async (req, res, next) => {
+  }
+  static async showAllBuses() {
     try {
       let buses = await AdminRepository.showBuses();
       if (!buses) {
-        req.status(203).json({ message: "No Buses Found" });
+        throw new ErrorResponse("No Buses Found", 409);
       }
-      req.buses = buses;
-      next();
+      return buses;
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
-  static addRoute = async (req, res, next) => {
-    let { start_place, destn_place } = req.body;
+  }
+  static async addRoute(data) {
+    let { start_place, destn_place } = data;
     try {
-      await RouteRepository.findRoute(req.body, "Route already exists", true);
-
-      let new_route = await AdminRepository.addRoute(start_place, destn_place);
-      req.new_route = new_route;
-      next();
+      await RouteRepository.findRoute(data, "Route already exists", true);
+      return await AdminRepository.addRoute(start_place, destn_place);
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 
-  static assignRoute = async (req, res, next) => {
-    let { bus_id, date } = req.body;
-
+  static async assignRoute(data) {
+    let { bus_id, date } = data;
     try {
       let routeConflicts = await RouteRepository.getDetails(bus_id, date);
       if (routeConflicts) {
-        return res.status(203).json({
-          message: "Bus is already assigned ",
-          data: routeConflicts,
-        });
+        throw new ErrorResponse(
+          {
+            message: "Bus is already assigned ",
+            data: routeConflicts,
+          },
+          409
+        );
       }
-      let routeAssigned = await AdminRepository.assignRoute(req.body);
-      req.assignedRoute = routeAssigned;
-      next();
+      return await AdminRepository.assignRoute(req.body);
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 
-  static insertBus = async (req, res, next) => {
-    let { bus_name, capacity, type } = req.body;
+  static async insertBus(data) {
+    let { bus_name, capacity, type } = data;
     try {
       await BusRepository.findBus({ bus_name });
-      req.bus = await AdminRepository.insertBus(bus_name, capacity, type);
-      next();
+      return await AdminRepository.insertBus(bus_name, capacity, type);
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 }

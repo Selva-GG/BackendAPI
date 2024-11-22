@@ -1,29 +1,53 @@
-import validations from "../model/validations.model.js";
+import ErrorResponse from "../model/error.model.js";
 
 export default class Validator {
-  static validate = (constraints, body) => {
-    for (let field in constraints) {
-      // First check if field exists in body
-      const fieldError = validations.checkFields(field, body);
-      if (fieldError) {
-        return fieldError;
+  static async isAdmin(user_id) {
+    try {
+      let user = await UserRepository.findUser({ user_id });
+      if (user.role !== "ADMIN") {
+        throw new ErrorResponse("Only Admin access", 403);
       }
-
-      const fieldValue = body[field];
-      const fieldConstraints = constraints[field];
-
-      for (let constraint of fieldConstraints) {
-        const [validationType, ...args] = constraint.split(":");
-        const validationFunc = validations[validationType];
-
-        if (validationFunc) {
-          const error = validationFunc(fieldValue, field, ...args);
-          if (error) {
-            return error;
-          }
-        }
-      }
+    } catch (err) {
+      throw err;
     }
-    return null;
-  };
+  }
+
+  static async validBus(bus_id) {
+    try {
+      await BusRepository.findBus({ bus_id });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async checkingBus(data) {
+    let { bus_id, start_place, destn_place, date } = data;
+    try {
+      const isAssigned = bus_id
+        ? await RouteRepository.findRouteSchedule("rs", { bus_id }, date)
+        : await RouteRepository.findRouteSchedule(
+            "r",
+            { start_place, destn_place },
+            date
+          );
+
+      if (isAssigned.length == 0) {
+        throw new ErrorResponse(
+          `No buses assigned for this route on ${date}`,
+          409
+        );
+      }
+      return isAssigned;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async validSeat(seat_id) {
+    try {
+      await BusRepository.seatExists({ seat_id });
+    } catch (err) {
+      throw err;
+    }
+  }
 }

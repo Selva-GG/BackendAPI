@@ -1,30 +1,48 @@
 import express from "express";
-import AdminService from "../../service/admin.service.js";
-import CheckService from "../../service/check.service.js";
+import adminService from "../../service/admin.service.js";
+import Validator from "../../util/validator.js";
+import tryCatchWrapper from "../../util/tryCatchWrapper.js";
 
-const router = express.Router();
+class AdminController {
+  constructor() {
+    this.router = express.Router();
+    this.router.use(tryCatchWrapper(this.#adminMiddleware));
+    this.router.post("/addAdmin", tryCatchWrapper(this.#addAdmin));
+    this.router.post("/addRoute", tryCatchWrapper(this.#addRoute));
+    this.router.post("/createBus", tryCatchWrapper(this.#insertBus));
+    this.router.post("/assign", tryCatchWrapper(this.#assignRoute));
+    this.router.get("/show-buses", tryCatchWrapper(this.#showBuses));
+  }
 
-router.use(CheckService.isAdmin);
+  #adminMiddleware = async (req, res) => {
+    await Validator.isAdmin(req.user_id);
+  };
+  #addAdmin = async (req, res) => {
+    let user = await adminService.createAdmin(req.body);
+    res.status(200).json({
+      message: " New admin user signed up",
+      user,
+    });
+  };
+  #addRoute = async (req, res) => {
+    let newRoute = await adminService.addRoute(req.body);
+    res.status(201).json({ message: "New route added", newRoute });
+  };
+  #insertBus = async (req, res) => {
+    let newBus = adminService.insertBus(req.body);
+    res.status(201).json({ message: "Bus is created", newBus });
+  };
+  #assignRoute = async (req, res) => {
+    let assignedRoute = await adminService.assignRoute(req.body);
+    res.status(201).json({
+      message: " Assigned the bus to the route ",
+      assignedRoute,
+    });
+  };
+  #showBuses = async (req, res) => {
+    let buses = await adminService.showAllBuses();
+    res.status(201).json({ message: " Buses", buses });
+  };
+}
 
-router.post("/addAdmin", AdminService.createAdmin);
-
-router.post("/addRoute", AdminService.addRoute, (req, res) => {
-  res.status(201).json({ message: "New route added", data: req.new_route });
-});
-
-router.post("/createBus", AdminService.insertBus, (req, res) => {
-  res.status(201).json({ message: "Bus is created", bus: req.bus });
-});
-
-router.post("/assign", AdminService.assignRoute, (req, res) => {
-  res.status(201).json({
-    message: " Assigned the bus to the route ",
-    data: req.assignedRoute,
-  });
-});
-
-router.get("/show-buses", AdminService.showAllBuses, (req, res) => {
-  res.status(201).json({ message: " Buses", data: req.buses });
-});
-
-export default router;
+export default new AdminController().router;

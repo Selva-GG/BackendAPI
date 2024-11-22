@@ -1,40 +1,35 @@
+import ErrorResponse from "../model/error.model.js";
 import BookingRepository from "../repository/booking.repository.js";
 import BusRepository from "../repository/bus.repository.js";
 import RouteRepository from "../repository/route.repository.js";
 import UserRepository from "../repository/user.repository.js";
 
 export default class BookingService {
-  static userBookings = async (req, res, next) => {
-    let user_id = req.params.id;
+  static async userBookings(user_id) {
     try {
-       await UserRepository.findUser({ user_id });
-  
+      await UserRepository.findUser({ user_id });
+
       let bookings = await BookingRepository.getUserBookings(user_id);
       if (!bookings) {
-        res
-          .status(205)
-          .json({ message: " No booking found on user_id " + user_id });
+        throw new ErrorResponse(" No booking found on user_id " + user_id, 409);
       }
-      req.bookings = bookings;
-      next();
+      return bookings;
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 
-  static cancelBooking = async (req, res, next) => {
-    let { schedule_id } = req.body;
+  static async cancelBooking(schedule_id) {
     try {
       await BusRepository.findSeats({ schedule_id });
-      req.seat = await BookingRepository.cancelBooking(schedule_id);
-      next();
+      return await BookingRepository.cancelBooking(schedule_id);
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 
-  static book = async (req, res, next) => {
-    let { user_id, seat_id, bus_id, date } = req.body;
+  static async book(data) {
+    let { user_id, seat_id, bus_id, date } = data;
     try {
       await UserRepository.findUser({ user_id });
       await BusRepository.findSeats({
@@ -42,32 +37,24 @@ export default class BookingService {
         bus_id,
         travel_date: date,
       });
-      req.response = await BookingRepository.Book(
-        user_id,
-        bus_id,
-        seat_id,
-        date
-      );
-      next();
+      return await BookingRepository.Book(user_id, bus_id, seat_id, date);
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 
-  static showSeatDetails = async (req, res, next) => {
-    let { bus_id, date } = req.body;
+  static async showSeatDetails(data) {
+    let { bus_id, date } = data;
     try {
       let seats = await BusRepository.seatDetails(bus_id, date);
-      req.seats = seats;
-      next();
+      return seats;
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 
-  static search = async (req, res, next) => {
-    let { date } = req.body;
-    let buses = req.assignedBuses;
+  static async search(data, buses) {
+    let { date } = data;
     try {
       let buses_details = await Promise.all(
         buses.map(async (bus) => {
@@ -81,10 +68,9 @@ export default class BookingService {
           return bus_detail;
         })
       );
-      req.buses = buses_details;
-      next();
+      return buses_details;
     } catch (err) {
-      return next(err);
+      throw err;
     }
-  };
+  }
 }

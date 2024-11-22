@@ -4,6 +4,7 @@ import request_auth from "../middleware/request_auth.js";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
 import open_api_validator from "openapi-validator-middleware";
+import fs from "fs-extra";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,12 +17,7 @@ const options = {
 
 async function initializeSwagger(swaggerPath, baseRoute, server) {
   console.log(`\x1b[36mAdding Swagger doc for: /${baseRoute}\x1b[0m`);
-  const { default: currentSwaggerDoc } = await import(
-    pathToFileURL(swaggerPath),
-    {
-      assert: { type: "json" },
-    }
-  );
+  const currentSwaggerDoc = await fs.readJSON(swaggerPath);
   const routePath = `/${baseRoute}-swagger`;
   server.get(routePath, (req, res) => res.json(currentSwaggerDoc));
   options.swaggerOptions.urls.push({
@@ -43,7 +39,6 @@ async function initializeRoutes(
 ) {
   console.log(`\x1b[32mAssigning routes for: /${baseRoute}\x1b[0m`);
   const { default: apiRoutes } = await import(pathToFileURL(routePath));
-
   apiRoutes.stack.forEach((route) => {
     if (route.route) {
       const apiPath = route.route.path;
@@ -58,6 +53,7 @@ async function initializeRoutes(
 
 async function initializeMiddleware(server) {
   console.log("\n\x1b[33mInstalling routes:\x1b[0m");
+  console.log(await fs.ensureDir("sql"));
 
   try {
     const routes = await recursive("./routes", ["*.swagger.json"]);

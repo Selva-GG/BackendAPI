@@ -5,31 +5,28 @@ import dateFormat from "date-format";
 import bcrypt from "bcrypt";
 
 export default class UserService {
-  static checkUserExists = async (req, res, next) => {
-    const { username, password, ...body } = req.body;
+  static async registerUser(data) {
+    const { username, password, ...body } = data;
 
     try {
-      await userRepository.findUser({username}, "User Already Exists", true);
-
+      await userRepository.findUser({ username }, "User Already Exists", true);
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await userRepository.insert({
         username,
         password: hashedPassword,
         ...body,
       });
-      req.user = {
+      return {
         access_token: await AuthRepository.generateAccessToken(user.user_id),
         user,
       };
-
-      next();
     } catch (err) {
-      next(err);
+      throw err;
     }
-  };
+  }
 
-  static checkCredentials = async (req, res, next) => {
-    const { username, password } = req.body;
+  static async loginUser(data) {
+    const { username, password } = data;
 
     try {
       const user = await userRepository.findUser(
@@ -37,48 +34,40 @@ export default class UserService {
         "Invalid username"
       );
       if (!(await bcrypt.compare(password, user.password))) {
-        return next(new ErrorResponse("Invalid  password", 403));
+        throw new ErrorResponse("Invalid  password", 403);
       }
 
-      req.user = {
+      return {
         access_token: await AuthRepository.generateAccessToken(user.user_id),
         user,
       };
-
-      next();
     } catch (err) {
-      next(err);
+      throw err;
     }
-  };
+  }
 
-  static logOutUser = async (req, res, next) => {
-    let access_token = req.access_token;
+  static async logoutUser(access_token) {
     try {
       await userRepository.deleteUserSession(access_token);
-      next();
     } catch (err) {
-      next(
-        new ErrorResponse("User session deletion Error " + err.message, 409)
-      );
+      throw err;
     }
-  };
+  }
 
-  static removeUser = async (req, res, next) => {
-    let user_id = req.user_id;
+  static async removeUser(user_id) {
     try {
       await userRepository.deleteUser(user_id);
-      next();
     } catch (err) {
-      return new ErrorResponse("User deletion error" + err.message, 409);
+      throw err;
     }
-  };
+  }
 
-  static refreshToken = async (req, res, next) => {
+  static async refreshToken(refresh_token) {
     try {
-      let validToken = await AuthRepository.checkValidToken(req.body);
+      let validToken = await AuthRepository.checkValidToken(refresh_token);
       let timeInMIlliseconds = new Date(validToken.expiring_at).getTime();
       if (timeInMIlliseconds > Date.now()) {
-        return res.status(409).json({
+        return {
           message: "Existing Token is not expired",
           token: {
             access_token: validToken.access_token,
@@ -87,14 +76,13 @@ export default class UserService {
               validToken.expiring_at
             ),
           },
-        });
+        };
       }
-      req.new_token = await AuthRepository.updateAccessToken(
-        req.body.refresh_token
+      return await AuthRepository.updateAccessToken(
+        refresh_token
       );
-      next();
     } catch (err) {
-      return next(err);
+      throw err
     }
-  };
+  }
 }

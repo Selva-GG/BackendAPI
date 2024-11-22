@@ -1,37 +1,48 @@
 import express from "express";
 import userService from "../../service/user.service.js";
-const router = express.Router();
+import tryCatchWrapper from "../../util/tryCatchWrapper.js";
+class UserController {
+  constructor() {
+    this.router = express.Router();
+    this.router.post("/login", tryCatchWrapper(this.#login));
+    this.router.post("/register", tryCatchWrapper(this.#register));
+    this.router.post("/logout", tryCatchWrapper(this.#logout));
+    this.router.post("/delete", tryCatchWrapper(this.#delete));
+    this.router.patch("/refresh", tryCatchWrapper(this.#refresh));
+  }
 
-router.post("/login", userService.checkCredentials, (req, res) => {
-  res.status(200).json({
-    message: " User Logged in",
-    access_token: req.user.access_token,
-    user: req.user.user,
-  });
-});
+  #login = async (req, res, next) => {
+    let response = await userService.loginUser(req.body);
+    res.status(200).json({
+      message: " User Logged in",
+      response,
+    });
+  };
 
-router.post("/register", userService.checkUserExists, (req, res) => {
-  res.status(201).json({
-    message: " New user signed up",
-    access_token: req.user.access_token,
-    user: req.user.user,
-  });
-});
+  #register = async (req, res, next) => {
+    let response = await userService.registerUser(req.body);
+    res.status(200).json({
+      message: " New user signed up",
+      response,
+    });
+  };
 
-router.post("/logout", userService.logOutUser, (req, res) => {
-  return res.status(200).json({ message: "Successful logout" });
-});
+  #logout = async (req, res, next) => {
+    await userService.logoutUser(req.access_token);
+    return res.status(200).json({ message: "Successful logout" });
+  };
 
-router.post("/delete", userService.removeUser, (req, res) => {
-  return res
-    .status(200)
-    .json({ message: "Successful deleted user " + req.user });
-});
+  #delete = async (req, res, next) => {
+    await userService.removeUser(req.user_id);
+    return res.status(200).json({ message: "Successful deleted user " });
+  };
+  #refresh = async (req, res, next) => {
+    let response = await userService.refreshToken(req.body);
+    return res.status(200).json({
+      message: "New Access token generated",
+      response,
+    });
+  };
+}
 
-router.patch("/refresh", userService.refreshToken, (req, res) => {
-  return res
-    .status(201)
-    .json({ message: "New Access token generated", data: req.new_token });
-});
-
-export default router;
+export default new UserController().router;
