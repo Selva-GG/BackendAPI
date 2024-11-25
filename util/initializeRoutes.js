@@ -2,9 +2,11 @@ import recursive from "recursive-readdir";
 import { fileURLToPath, pathToFileURL } from "url";
 import request_auth from "../middleware/request_auth.js";
 import swaggerUi from "swagger-ui-express";
+import combinedSwagger from "../swagger.json" assert { type: "json" };
 import path from "path";
 import open_api_validator from "openapi-validator-middleware";
 import fs from "fs-extra";
+import { json } from "express";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,7 +30,7 @@ async function initializeSwagger(swaggerPath, baseRoute, server) {
   open_api_validator.init(currentSwaggerDoc);
   const swaggerValidation =
     open_api_validator.getNewMiddleware(currentSwaggerDoc);
-  return swaggerValidation;
+  return { swaggerValidation, currentSwaggerDoc };
 }
 
 async function initializeRoutes(
@@ -51,6 +53,34 @@ async function initializeRoutes(
   server.use(`/${baseRoute}`, apiRoutes);
 }
 
+async function combineSwaggerFiles(swaggerDoc) {
+  if (swaggerDoc.tags && swaggerDoc.tags.length) {
+    combinedSwagger.tags.push([...swaggerDoc.tags]);
+  }
+  if (swaggerDoc.paths) {
+    Object.keys(swaggerDoc.paths).forEach((apiPath) => {
+      combinedSwagger.paths[`${swaggerDoc.apiPath}`] =
+        swaggerDoc.paths[apiPath];
+    });
+  }
+
+  if (swaggerDoc.components) {
+    Object.keys(swaggerDoc.components).forEach((component) => {
+      combinedSwagger.components[component] = swaggerDoc.components[component];
+    });
+  }
+}
+
+async function setupSwaggerUI(server) {
+  server.get("/swagger", (req, res) => res.json(combinedSwagger));
+  options.swaggerOptions.urls.push({
+    url: "/swagger",
+    name: "All",
+  });
+
+  server.use("/api-docs", swaggerUi.serve, swaggerUi.setup(null, options));
+}
+
 async function initializeMiddleware(server) {
   console.log("\n\x1b[33mInstalling routes:\x1b[0m");
 
@@ -64,7 +94,7 @@ async function initializeMiddleware(server) {
       //Initializing Swagger
       const parentDirectory = path.dirname(routePath);
       const swaggerPath = (await recursive(parentDirectory, ["*.js"]))[0];
-      const swaggerValidation = await initializeSwagger(
+      const { swaggerValidation, currentSwaggerDoc } = await initializeSwagger(
         swaggerPath,
         baseRoute,
         server
@@ -72,9 +102,11 @@ async function initializeMiddleware(server) {
 
       //Initializing Routes
       await initializeRoutes(routePath, baseRoute, server, swaggerValidation);
+
+      //Combining swagger files
+      await combineSwaggerFiles(currentSwaggerDoc);
     }
-    // Setup Swagger UI
-    server.use("/api-docs", swaggerUi.serve, swaggerUi.setup(null, options));
+    setupSwaggerUI(server);
     console.log(
       "\x1b[32mSwagger documentation available at: http://192.168.1.13:3000/api-docs\x1b[m"
     );
